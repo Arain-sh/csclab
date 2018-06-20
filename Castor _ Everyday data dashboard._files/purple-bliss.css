@@ -1,0 +1,222 @@
+/***********************
+Header
+***********************/
+
+header {
+    position: relative;
+    padding-top: 130px;
+    background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+    background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+    background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+    overflow: hidden;
+}
+header a.btn-white,header a.btn-transparent:hover,nav.bg-solid .navbar-collapse .navbar-right > li > a:focus {
+  color: #000428;
+}
+
+nav.bg-solid .navbar-header .navbar-brand {
+
+  background-repeat: no-repeat;
+  background-position: 15px 15px;
+}
+
+@media (max-width: 767px) {
+    nav.bg-solid .navbar-header .navbar-brand {
+      background-position: 15px 7.5px;
+    }
+}
+
+@media (max-width: 767px) {
+  nav .navbar-collapse {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background-color: #000428;
+    background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+    background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+    background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  }
+}
+
+nav.bg-solid .navbar-collapse .navbar-right > li.active > a {
+  border-bottom: 2px solid #004e92;
+}
+nav.bg-solid .navbar-collapse .navbar-right > li > a:hover {
+  border-bottom: 2px solid #004e92;
+}
+nav .btn-getnow:hover {
+  color: #004e92;
+}
+nav.bg-solid .navbar-collapse .navbar-right > li a,nav.bg-solid .btn-getnow{
+    color:#004e92;
+}
+nav.bg-solid .btn-getnow {
+  border: 2px solid #004e92;
+}
+nav.bg-solid .btn-getnow:hover {
+  background-color: #004e92;
+}
+/***********************
+overView
+***********************/
+.sec-overview [class^="col-"] .wrapper-img > .overview-img.lnr, .sec-overview [class^="col-"] .wrapper-img > .overview-img.fa {
+  color: #004e92;
+}
+.sec-overview [class^="col-"] hr {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+}
+.sec-overview [class^="col-"]:hover hr {
+  background-image: -moz-linear-gradient(90deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(90deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(90deg, #000428 0%, #004e92 100%);
+}
+/***********************
+all vertical sections 
+***********************/
+section.bg-white .hr, section.bg-grey .hr {
+  background-image: url("../../../img/hr.png");
+}
+section.bg-gradient-vertical {
+  background-image: -moz-linear-gradient(90deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(90deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(90deg, #000428 0%, #004e92 100%);
+}
+section#features .lnr {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  color:#004e92;
+}
+.sec-screenshots .filter-btns a:hover{
+    color:#000428!important;
+}
+.sec-screenshots .screenshots .screenshot::before {
+  background-image: -moz-linear-gradient(90deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(90deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(90deg, #000428 0%, #004e92 100%);
+}
+section.bg-gradient-horizontal {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+}
+section#screenshots .filter-btn.active {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  color: #000428;
+}
+.sec-screenshots .screenshots .owl-controls .owl-pagination .owl-page {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+}
+/************
+Testimonial
+*************/
+.sec-testimonial .owl-controls .owl-pagination .owl-page {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+}
+.sec-testimonial .media .media-body .fa-quote-left,.sec-testimonial .media .media-body i[class*="fa-star"] {
+  color: #004e92;
+}
+/************
+Team
+*************/
+.sec-team .wrapper a i {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+}
+
+/************
+pricing
+*************/
+.sec-pricing .highlighted[class^="col-"] .wrapper::after {
+  background-color: #000428;
+}
+.sec-pricing .wrapper h3,.sec-pricing .wrapper h4{
+      color: #000428!important;
+}
+.sec-pricing [class^="col-"] .wrapper a {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  color:#000428;
+}
+.sec-pricing .highlighted[class^="col-"] .wrapper a,
+.sec-pricing [class^="col-"] .wrapper .pricing-img,
+.sec-pricing .highlighted[class^="col-"] .wrapper .pricing-img {
+  color: #004e92;
+}
+/************
+Latest post
+*************/
+.sec-blog .thumbnail-blog p + a, .sec-blog-list .thumbnail-blog p + a {
+  color: #000428;
+}
+.sec-blog .container > a, .sec-blog-list .container > a {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  color: #000428; 
+}
+.sec-blog-list .pagination a::after {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+}
+.sec-blog-post .blog-submit form button {
+  background-image:-moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image:-webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image:-ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+}
+/************
+Get apps
+*************/
+.sec-get-app a::after {
+  background-image: -moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image: -webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+}
+/************
+Section contact
+*************/
+.sec-contact,.sec-contact form {
+  background-color: #000428;
+}
+.sec-contact .contact .contact-info h5,.sec-contact form button {
+  color: #000428;
+}
+/************
+footer
+*************/
+footer {
+  background-color: #000428;
+  position: relative;
+}
+footer .subscription i,footer .subscription button{
+    color: #000428;
+}
+/************
+documentation
+*************/
+.sec-doc a {
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+  height: 50px;
+  width: 250px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  background-color: #000428;
+  background-image:-moz-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image:-webkit-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  background-image:-ms-linear-gradient(0deg, #000428 0%, #004e92 100%);
+  color:#000428;
+}

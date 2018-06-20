@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cplex">
+    <CLASSES>
+      <root url="jar://E:/cplex/cplex/lib/cplex.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

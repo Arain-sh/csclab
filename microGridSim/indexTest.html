@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>微能源网</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="./css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="./css/jquery.dataTables.css">
+
+	<script type="text/javascript" language="javascript" src="./js/jquery-1.11.1.min.js"></script>
+
+	<script type="text/javascript" class="init">
+	$(document).ready(function() {
+		$('#fulltable').dataTable({
+			"pagingType": "full_numbers",
+			"ordering": false
+		});
+	});
+	</script>
+
+	<script type="text/javascript" class="init">
+	$(document).ready(function() {
+		$('#clientTable').dataTable({
+			"pagingType": "full_numbers",
+			"ordering": false
+		});
+	});
+	</script>
+
+	<!-- Google Tracking (for sentdex.com) -->
+	<script>
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+		m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+	ga('create', 'UA-40019675-1', 'sentdex.com');
+	ga('send', 'pageview');
+	</script>
+
+</head>
+
+<header>
+	<div class="navbar-header">
+		<a class="navbar-brand" rel="home" href="" title="Sentdex Analysis">
+			<img style="max-height:90px; max-width:100%; margin-top: -5px;" src="./images/labLogo-b.png">
+		</a>
+	</div>
+	<br><br>
+</header>
+
+
+<body style="min-height:100%;">
+
+	<!--<hr style="color:#77777" ></hr>-->
+	<!-- Flashed messages and actual body content -->
+	<div class="container" style="min-height:100%">
+
+		<body class="body">
+
+			<div class="container" style=" margin-top: 36px">
+				<ul class="nav navbar-nav navbar-right">
+					<ul class="nav nav-pills">
+						<a href="/financial-analysis/">
+							<button type="button" class="btn btn-primary" style=" margin-top: 38px; margin-bottom: 20px; height:35px; margin-right: 5px; margin-left: 15px">
+								能源调度
+							</button>
+						</a>
+						<a href="/political-analysis/">
+							<button type="button" class="btn btn-primary" style=" margin-top: 38px; margin-bottom: 20px; height:35px;">传输优化
+							</button>
+						</a>
+						<a href="/geographical-analysis/">
+							<button type="button" class="btn btn-primary" style=" margin-top: 38px; margin-bottom: 20px; height:35px; margin-left: 5px; margin-right: 5px">
+							结果展示
+							</button>
+						</a>
+					</ul>
+				</ul>
+			</div>
+			<br><br>
+			<div class="container">
+				<!--<h4>crime -  - Sentiment Analysis<h4>-->
+
+
+				<!--
+
+				BUTTONS:
+
+				Last 7 days:  resample  5Min
+				Last 30 days: resample  60Min
+				Last 6 months resample  3 hours.
+				Last Year:    resample  6 hours
+				All time:     resample  1 day
+
+			-->
+			<div class="row">
+				<div class='col-md-6'>
+					<div class="well">
+						<h3>输入参数</h3>
+						<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+						运行原理
+						</button>
+						<div class="collapse" id="collapseExample">
+							<div class="well">
+								<p>在输入参数框中输入各项参数，点击选取文件上传时序参数，点击提交后运行程序并展示调度结果。
+							</div>
+						</div>
+
+						<p>
+						</p>
+
+						<div class="contact-form">
+							<div class="text" >
+								<form action="#chart_ID" method="post" enctype="multipart/form-data">
+									<p>电价：
+									<input type="text" name="price" value="0.1-3.9￥" onfocus="this.value = '';" onblur="if (this.value	== '') {this.value = '0.1-3.9￥';}"/></p>
+									<p>柴油机最大产量：
+									<input type="text" name="DGMax" value="80-100KW" onfocus="this.value = '';" onblur="if (this.value	== '') {this.value = '80-100KW';}"/></p>
+									<p>柴油机最小产量：
+									<input type="text" name="DGMin" value="1-10KW" onfocus="this.value = '';" onblur="if (this.value	== '') {this.value = '1-10KW';}"/></p>
+									<p>蓄电池容量：
+									<input type="text" name="Battery" value="30KW" onfocus="this.value = '';" onblur="if (this.value	== '') {this.value = '30KW';}"/></p>
+									<p>蓄电池储能下限：
+									<input type="text" name="BatteryMin" value="6KW" onfocus="this.value = '';" onblur="if (this.value	== '') {this.value = '6KW';}"/></p>
+									<p>备注：</p>
+									<textarea name="Message" value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">
+									</textarea>
+									<br><br>
+									<label for="file">文件名:</label>
+									<input type="file" name="file" id="file" />
+									<p>CSV格式：时间t,负载需求L,光伏电池发电Pv</p>
+									<br><br>
+									<input type="submit" <button type="button" class="btn btn-primary"></button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+				<div class="well">
+				<h2 align="center">微能源网系统结构图</h2>
+				<img align="center" width="95%" src="./images/MicroNetwork.png"></div>
+				</div>
+
+				<div class="btn-group btn-group-justified" style="margin-left: 100px">
+
+					<div class="btn-toolbar" role="toolbar">
+
+						<div class="btn-group">
+							<a href="./indexTest.html#chart_ID">
+								<button type="button" class="btn btn-default navbar-btn">24 hours</button>
+							</a>
+						</div>
+						<div class="btn-group">
+							<a href="./indexTest=48h.html#chart_ID">
+								<button type="button" class="btn btn-default navbar-btn">48 hours</button>
+							</a>
+						</div>
+						<div class="btn-group">
+							<a href="./indexTest=72h.html#chart_ID">
+								<button type="button" class="btn btn-default navbar-btn">72 hours</button>
+							</a>
+						</div>
+					</div>
+				</div>
+
+					<div class="container-fluid" style="margin-left:50px">
+						<div class="collapse" id="instrumentsearch" style="margin-right:100px">
+							<div class="panel panel-primary"></div>
+						</div>
+					</div>
+
+
+
+					<div id=chart_ID class="chart" style="max-height: 500px"></div>
+
+					<script>
+					var chart_id = chart_ID;
+					var series = [{
+						'color': '#bdbdbd',
+						'type': 'line',
+						'data': [
+						[1528761600000,0.0],
+						[1528765200000,0.0],
+						[1528768800000,0.0],
+						[1528772400000,6.0],
+						[1528776000000,0.0],
+						[1528779600000,0.0],
+						[1528783200000,0.0],
+						[1528786800000,0.0],
+						[1528790400000,0.0],
+						[1528794000000,0.0],
+						[1528797600000,0.0],
+						[1528801200000,2.2000000000000015],
+						[1528804800000,0.0],
+						[1528808400000,0.0],
+						[1528812000000,8.672],
+						[1528815600000,7.126400000000001],
+						[1528819200000,16.71519999999996],
+						[1528822800000,13.367200000000025],
+						[1528826400000,0.0,-1.253119999999992],
+						[1528830000000,4.48992,-0.2569600000000083],
+						[1528833600000,0.0],
+						[1528837200000,0.0],
+						[1528840800000,0.0],
+						[1528844400000,0.0]
+					],
+						'name': '柴油机发电量',
+					}, {
+						'color': '#388E3C',
+						'type': 'line',
+						'data': [
+							[1528761600000,-2.4000000000000004],
+							[1528765200000,0.40000000000000036],
+							[1528768800000,-1.52],
+							[1528772400000,-0.48],
+							[1528776000000,0.0],
+							[1528779600000,0.0],
+							[1528783200000,0.0],
+							[1528786800000,5.0],
+							[1528790400000,5.0],
+							[1528794000000,-2.2],
+							[1528797600000,-3.2],
+							[1528801200000,-1.8400000000000003],
+							[1528804800000,-2.1200000000000006],
+							[1528808400000,1.1119999999999994],
+							[1528812000000,-1.3280000000000003],
+							[1528815600000,1.1264000000000005],
+							[1528819200000,-1.2848000000000397],
+							[1528822800000,1.24448000000004],
+							[1528826400000,-1.253119999999992],
+							[1528830000000,-0.2569600000000083],
+							[1528833600000,0.0],
+							[1528837200000,0.0],
+							[1528840800000,0.0],
+							[1528844400000,0.0]
+						],
+						'name': '蓄电池充(放)电'
+					}, {
+						'color': '#90A4AE',
+						'type': 'line',
+						'data': [
+							[1528761600000,7.600000000000001],
+							[1528765200000,10.4],
+							[1528768800000,14.479999999999999],
+							[1528772400000,8.520000000000001],
+							[1528776000000,7.0],
+							[1528779600000,5.0],
+							[1528783200000,-1.0],
+							[1528786800000,-15.0],
+							[1528790400000,-5.0],
+							[1528794000000,-12.200000000000001],
+							[1528797600000,7.8],
+							[1528801200000,14.959999999999997],
+							[1528804800000,7.88],
+							[1528808400000,7.111999999999999],
+							[1528812000000,15.0],
+							[1528815600000,0.0],
+							[1528819200000,15.0],
+							[1528822800000,14.877280000000015],
+							[1528826400000,13.746880000000008],
+							[1528830000000,5.253119999999992],
+							[1528833600000,11.0],
+							[1528837200000,8.0],
+							[1528840800000,9.0],
+							[1528844400000,0.0]
+						],
+						'name': '大电网购(售)电'
+					}, {
+						'color': '#04BAE3',
+						'type': 'line',
+						'data': [
+							[1528761600000,10],
+							[1528765200000,10],
+							[1528768800000,10],
+							[1528772400000,16],
+							[1528776000000,15],
+							[1528779600000,17],
+							[1528783200000,24],
+							[1528786800000,40],
+							[1528790400000,40],
+							[1528794000000,60],
+							[1528797600000,70],
+							[1528801200000,96],
+							[1528804800000,99],
+							[1528808400000,100],
+							[1528812000000,80],
+							[1528815600000,75],
+							[1528819200000,33],
+							[1528822800000,40],
+							[1528826400000,27],
+							[1528830000000,15],
+							[1528833600000,10],
+							[1528837200000,11],
+							[1528840800000,8],
+							[1528844400000,9]
+						],
+						'name': '负载需求'
+					}, {
+						'color': '#FF5252',
+						'type': 'line',
+						'data': [
+							[1528761600000,0],
+							[1528765200000,0],
+							[1528768800000,0],
+							[1528772400000,0],
+							[1528776000000,0],
+							[1528779600000,10],
+							[1528783200000,19],
+							[1528786800000,41],
+							[1528790400000,60],
+							[1528794000000,70],
+							[1528797600000,80],
+							[1528801200000,85],
+							[1528804800000,80],
+							[1528808400000,90],
+							[1528812000000,74],
+							[1528815600000,50],
+							[1528819200000,27],
+							[1528822800000,7],
+							[1528826400000,0],
+							[1528830000000,0],
+							[1528833600000,0],
+							[1528837200000,0],
+							[1528840800000,0],
+							[1528844400000,0]
+						],
+						'name': '光伏电池输出预测'
+					}]
+					var title = {
+						'text': '微电网调度结果'
+					}
+					var xAxis = [{
+						'type': 'datetime'
+					}]
+					var yAxis = [{
+						'title': {
+							'text': '功率(kw)'
+						}
+					}]
+					var chart = {
+						'zoomType': 'x',
+						'renderTo': 'chart_ID',
+						'type': 'line'
+					}
+					var colors = ['#04BAE3', '#333333', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1', '#7cb5ec', '#434348']
+					var credits = {
+						"text": "CSC",
+						"href": "csc-lab.com.cn"
+					}
+					</script>
+
+					<script>
+					$.fn.ready(function() {
+						// Spoiler
+						$(document).on('click', '.spoiler-btn', function(e) {
+							e.preventDefault()
+							$(this).parent().children('.spoiler-body').collapse('toggle')
+						});
+					});
+					</script>
+
+					<br><br>
+					<div class="container" style="width:100%">
+						<table id="fulltable" class="table table-hover" cellspacing="0">
+							<thead>
+								<tr align="center">
+									<th>
+										<th align="center">Topic</th>
+
+										<th>1Y Volume of Mentions</th>
+
+										<th>Sentiment</th>
+										<th>Rising or Falling</th>
+
+									</tr>
+								</thead>
+								<tbody>
+
+
+
+									<tr valign="center" onclick="document.location='/political-analysis/?i=Battery&tf=30d'" style="cursor:pointer">
+										<td valign="center"><img class="img-responsive" style="max-width:50px" src="./images/War2.png" /></td>
+
+
+										<!-- name -->
+										<td valign="center">&nbsp;&nbsp;Battery</td>
+
+										<!-- volume -->
+										<td valign="center">&nbsp;&nbsp;1636978</td>
+
+										<!-- recent sentiment -->
+										<td valign="center">&nbsp;&nbsp;<button class="btn btn-default btn-sm" style="background:#86d200">good</button></td>
+
+										<!-- direction -->
+
+
+										<td valign="center">&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-down" style="color:#ff6b50"></span> </td>
+
+
+									</tr>
+
+									<tr valign="center" onclick="document.location='/political-analysis/?i=DG&tf=30d'" style="cursor:pointer">
+										<td valign="center"><img class="img-responsive" style="max-width:50px" src="./images/Crime.png" /></td>
+
+
+										<!-- name -->
+										<td valign="center">&nbsp;&nbsp;DG</td>
+
+										<!-- volume -->
+										<td valign="center">&nbsp;&nbsp;539084</td>
+
+										<!-- recent sentiment -->
+										<td valign="center">&nbsp;&nbsp;<button class="btn btn-default btn-sm" style="background:#fb9414">poor</button></td>
+
+										<!-- direction -->
+
+
+										<td valign="center">&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-down" style="color:#ff6b50"></span> </td>
+
+
+									</tr>
+
+
+								</tbody>
+							</table><br><br><br><br>
+						</div>
+
+						<!--<h5><strong> Description:</strong></h5>
+						<h5></h5>-->
+
+
+					</div>
+
+				</div>
+
+			</div>
+			<br><br>
+
+
+		</body>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src=./js/graph.js></script>
+
+
+	</div>
+
+
+
+	<!-- js inclues -->
+	<script src="./js/jquery-1.11.1.min.js"></script>
+	<script src="./js/highstock.js"></script>
+
+	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/dropdown.js"></script>
+	<script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+
+	<script>
+	$(document).ready(function() {
+		$('#example').dataTable({
+			"pagingType": "full_numbers"
+		});
+	});
+	</script>
+
+	<script>
+	function goBack() {
+		window.history.back()
+	}
+	</script>
+
+</body>
+
+
+
+<div class="footer-container" style="background-color: #ececec">
+	<div class="border-row" style="width:100%; margin-bottom: 15px;"> </div>
+	<footer id="footer">
+		<hr></hr>
+		<div class="row">
+			<div class="col-md-2">
+				<ul style="list-style-type: none;">
+					<li><strong>About</strong></li>
+					<li><a href="/about/">About Us</a></li>
+					<li><a href="/contact/">Contact</a></li>
+
+				</ul>
+
+			</div>
+
+
+			<div class="col-md-2">
+				<ul style="list-style-type: none;">
+					<li>Nothing on this website is to be taken as investment advice. This website and all of its contents are for educational use only.</li>
+					<li>&copy; 2015 csc-lab.com.cn</li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+
+</div>
+
+
+</html>

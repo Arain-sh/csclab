@@ -1,0 +1,188 @@
+/*
+  Theme Name: Faded | App Landing Page
+  Theme URL: http://themes.droitlab.com/html/faded
+  Author: droitthemes
+  Author URI: https://themeforest.net/user/droitthemes
+  Description: App Landing Page
+  Version: 1.0
+*/
+
+/*--------------------------------
+setup messurements
+----------------------------------*/
+.zero-padding{
+    padding: 0px;
+}
+.lr-padding{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.left-padding{
+    padding-left: 0px;
+}
+.right-padding{
+    padding-right: 0px;
+}
+.zero-margin{
+    margin: 0px;
+}
+@media (max-width: 1199px) {
+    .lr-padding{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+:focus {
+    outline: 0;
+}
+/*--------------------------------
+conatct from
+----------------------------------*/
+section#contact #contact_form #uName:focus {
+    border: 1px solid #ff5a00;
+}
+
+section#contact p#fftext{
+    margin: 0;
+    padding-top: 15px!important;
+    position: relative;
+}
+section#contact span#ffsuccess{
+    bottom: 12%;
+    display: inline;
+    height: auto;
+    left: 60%;
+    position: absolute!important;
+    width: 7%;
+}
+.input-expand {
+    border:none!important;
+}
+.mchimp-sucmessage{}
+/*--------------------------------
+scrollup
+----------------------------------*/
+.scrollup {
+  bottom: 10px;
+  display: none;
+  height: 50px;
+  position: fixed;
+  right: 10px;
+  width: 50px;
+  padding: 12px;
+  border-radius: 100%;
+  background:#000000;
+}
+@media (min-width: 992px) {
+  .scrollup {
+    bottom: 50px;
+    right: 100px;
+  }
+}
+.scrollup i{
+    font-size: 17px;
+    left: 35%;
+    position: absolute;
+    top: 30%;
+    color: #fff;
+}
+a.scrollup i:focus, a.scrollup i:hover,a.scrollup i:active{
+    color: #fff!important;
+}
+/*--------------------------------
+loader
+----------------------------------*/
+.loading{
+    background-color: #4776e6;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999999;
+    margin-top: 0px;
+    top: 0px;
+}
+.loading-center{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.loading-center-absolute {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 150px;
+    width: 150px;
+    margin-top: -75px;
+    margin-left: -75px;
+}
+.object{
+    width: 20px;
+    height: 20px;
+    background-color: #FFF;
+    float: left;
+    margin-right: 20px;
+    margin-top: 65px;
+    -moz-border-radius: 50% 50% 50% 50%;
+    -webkit-border-radius: 50% 50% 50% 50%;
+    border-radius: 50% 50% 50% 50%;
+}
+
+.object_one {
+    -webkit-animation: object_one 1.5s infinite;
+    animation: object_one 1.5s infinite;
+}
+.object_two {
+    -webkit-animation: object_two 1.5s infinite;
+    animation: object_two 1.5s infinite;
+    -webkit-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+}
+.object_three {
+    -webkit-animation: object_three 1.5s infinite;
+    animation: object_three 1.5s infinite;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+
+}
+
+@-webkit-keyframes object_one {
+    75% { -webkit-transform: scale(0); }
+}
+
+@keyframes object_one {
+
+    75% {
+        transform: scale(0);
+        -webkit-transform: scale(0);
+    }
+
+}
+@-webkit-keyframes object_two {
+
+
+    75% { -webkit-transform: scale(0); }
+
+
+}
+@keyframes object_two {
+    75% {
+        transform: scale(0);
+        -webkit-transform:  scale(0);
+    }
+
+}
+
+@-webkit-keyframes object_three {
+
+    75% { -webkit-transform: scale(0); }
+
+}
+
+@keyframes object_three {
+
+    75% {
+        transform: scale(0);
+        -webkit-transform: scale(0);
+    }
+
+}
