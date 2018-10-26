@@ -35,7 +35,11 @@
 	<script>
 		var width = 1000;
 		var height = 1000;
-
+		
+		var linear = d3.scale.linear()
+					.domain(-13000,15000)
+					.range(0,1000);
+					
 		var svg = d3.select("body")
 				.append("svg")
 				.attr("width", width)
@@ -47,11 +51,14 @@
 				.center([107,31])
 				.scale(850)
 				.translate([width/2, height/2]);
+		
 		var path = d3.geo.path()
-				.projection(projection);
+				.projection (function(d) {
+					return [linear(d.x),linear(d.y)];
+					});
 		
 
-		d3.json("main2015.geojson", function(error, root){
+		d3.json("test.geojson", function(error, root){
 			if (error)
 				return console.error(error);
 			console.log(root.features);
@@ -62,6 +69,7 @@
 				.append("path")
 				.attr("stroke", "#000")
 				.attr("stroke-width", 1)
+				.attr("fill", "AliceBlue")
 				.attr("d", path);
 		})
 
