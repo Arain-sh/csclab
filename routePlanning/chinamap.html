@@ -20,13 +20,17 @@
 	    .append("g")
 	    .attr("transform", "translate(0,0)");
 	
-	var projection = d3.geo.mercator()
+	var projection = d3.geoTransverseMercator()
 						.center([107, 31])
 						.scale(850)
     					.translate([width/2, height/2]);
 	
+	var linear = d3.scale.linear()
+					.domain(-13000,15000)
+					.range(0,1000)
+	
 	var path = d3.geo.path()
-					// .projection(projection);
+					.projection(linear);
 	
 	
 	var color = d3.scale.category20();
