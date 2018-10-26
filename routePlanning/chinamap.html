@@ -27,8 +27,8 @@
 						*/
 	
 	var linear = d3.scale.linear()
-					.domain(-13000,15000)
-					.range(0,1000)
+					.domain([-13000,15000])
+					.range([0,1000]);
 	
 	var path = d3.geo.path()
 					.projection(function(d) {return [linear(d[0]), linear(d[1])];});
