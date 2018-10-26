@@ -36,7 +36,7 @@
 	var color = d3.scale.category20();
 	
 	
-	d3.json("main2015.geojson", function(error, root) {
+	d3.json("test.geojson", function(error, root) {
 		
 		if (error) 
 			return console.error(error);
@@ -47,7 +47,7 @@
 			.enter()
 			.append("path")
 			.attr("stroke","#000")
-			.attr("stroke-width",1)
+			.attr("stroke-width",0.5)
 			.attr("fill", function(d,i){
 				return color(i);
 			})
