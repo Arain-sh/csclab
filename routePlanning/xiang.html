@@ -35,9 +35,13 @@
 		var width = "100%";
 		var height = "100%";
 		
-		var linear = d3.scale.linear()
-					.domain([-13000,15000])
-					.range([0,1000]);
+		var xScale = d3.scale.linear()
+					.domain([-13000,18000])
+					.range([0,width]);
+					
+		var yScale = d3.scale.linear()
+					.domain([-13000,16000])
+					.range([0,height]);
 					
 		var svg = d3.select("body")
 				.append("svg")
@@ -61,7 +65,7 @@
 				.attr("opacity", 0.5)
 				.attr("points", function(d) {
 					return d.points.map(
-						function(d) {return [linear(d[0]), height - linear(d[1])].join(",");}
+						function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
 						).join(" ");
 				});
 		});
@@ -81,7 +85,7 @@
 				.attr("fill", "#00FF00")
 				.attr("points", function(d) {
 					return d.points.map(
-						function(d) {return [linear(d[0]), height - linear(d[1])].join(",");}
+						function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
 						).join(" ");
 				});
 		});
