@@ -68,14 +68,14 @@
 				return console.error(error);
 			console.log(root.features);
 			
-			svg.selectAll("polygon")
+			svg.selectAll("path")
 				.data(root.features)
 				.enter()
-				.append("polygon")
+				.append("path")
 				.attr("stroke", "#000")
 				.attr("stroke-width", 0.4)
 				.attr("fill", "AliceBlue")
-				.attr("points", line);
+				.attr("d", line);
 		})
 
 	</script>
