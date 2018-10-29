@@ -44,25 +44,9 @@
 				.append("svg")
 				.attr("width", width)
 				.attr("height", height)
+				.attr("fill", "#FAEBD7")
 				.append("g")
-				.attr("transform", "translate(0, 0)");
-		
-		/*
-		var projection = d3.geo.mercator()
-				.center([107,31])
-				.scale(850)
-				.translate([width/2, height/2]);
-		
-		var path = d3.geo.path()
-				.projection (function(d) {
-					return [linear(d.x),linear(d.y)];
-					});
-					*/
-		
-		var line = d3.svg.line()
-				.x(function(d) {return d.x;})
-				.y(function(d) {return d.y;})
-				.interpolate("linear");
+				.attr("transform", "translate(0, 0)");		
 		
 		d3.json("main2015.json", function(error, root){
 			if (error)
@@ -75,7 +59,7 @@
 				.append("polygon")
 				.attr("stroke", "#000")
 				.attr("stroke-width", 0.1)
-				.attr("fill", "AliceBlue")
+				.attr("fill", "#00FF00")
 				.attr("points", function(d) {
 					return d.points.map(
 						function(d) {return [linear(d[0]), height - linear(d[1])].join(",");}
