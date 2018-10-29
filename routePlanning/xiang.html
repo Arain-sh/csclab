@@ -64,7 +64,7 @@
 				.y(function(d) {return d.y;})
 				.interpolate("linear");
 		
-		d3.json("test.json", function(error, root){
+		d3.json("main2015.json", function(error, root){
 			if (error)
 				return console.error(error);
 			console.log(root.features);
@@ -74,11 +74,11 @@
 				.enter()
 				.append("polygon")
 				.attr("stroke", "#000")
-				.attr("stroke-width", 0.4)
+				.attr("stroke-width", 0.1)
 				.attr("fill", "AliceBlue")
 				.attr("points", function(d) {
 					return d.points.map(
-						function(d) {return [linear(d[0]), linear(d[1])].join(",");}
+						function(d) {return [linear(d[0]), height - linear(d[1])].join(",");}
 						).join(" ");
 				});
 		})
