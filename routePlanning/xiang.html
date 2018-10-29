@@ -60,14 +60,14 @@
 					*/
 		
 		var line = d3.svg.line()
-				//.x(function(d) {return linear(d.x)})
-				//.y(function(d) {return linear(d.y)});
+				.x(function(d) {return d.x})
+				.y(function(d) {return d.y});
 		
 		d3.json("test.geojson", function(error, root){
 			if (error)
 				return console.error(error);
 			console.log(root.features);
-			console.log(line);
+			
 			svg.selectAll("polygon")
 				.data(root.features)
 				.enter()
