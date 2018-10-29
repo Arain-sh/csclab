@@ -44,7 +44,6 @@
 				.append("svg")
 				.attr("width", width)
 				.attr("height", height)
-				.attr("fill", "#FAEBD7")
 				.append("g")
 				.attr("transform", "translate(0, 0)");		
 		
@@ -57,8 +56,8 @@
 				.data(data.features)
 				.enter()
 				.append("polygon")
-				.attr("stroke", "#0000")
-				.attr("stroke-width", 0.3)
+				.attr("stroke", "#000")
+				.attr("stroke-width", 1)
 				.attr("fill", "#FAEBD7")
 				.attr("points", function(d) {
 					return d.points.map(
@@ -67,13 +66,13 @@
 				});
 		});
 		
-		/*
+		
 		d3.json("main2015.json", function(error, root){
 			if (error)
 				return console.error(error);
 			console.log(root.features);
 			
-			svg.selectAll("polygon")
+			svg //.selectAll("polygon")
 				.data(root.features)
 				.enter()
 				.append("polygon")
@@ -85,7 +84,7 @@
 						function(d) {return [linear(d[0]), height - linear(d[1])].join(",");}
 						).join(" ");
 				});
-		});*/
+		});
 
 	</script>
 
