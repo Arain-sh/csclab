@@ -57,8 +57,9 @@
 				.enter()
 				.append("polygon")
 				.attr("stroke", "#000")
-				.attr("stroke-width", 1)
+				.attr("stroke-width", 0.3)
 				.attr("fill", "#FAEBD7")
+				.attr("opacity", 0.5)
 				.attr("points", function(d) {
 					return d.points.map(
 						function(d) {return [linear(d[0]), height - linear(d[1])].join(",");}
