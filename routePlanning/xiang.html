@@ -46,31 +46,36 @@
 				.attr("height", height)
 				.append("g")
 				.attr("transform", "translate(0, 0)");
-
+		
+		/*
 		var projection = d3.geo.mercator()
 				.center([107,31])
 				.scale(850)
 				.translate([width/2, height/2]);
 		
 		var path = d3.geo.path()
-				//.projection (function(d) {
-				//	return [linear(d.x),linear(d.y)];
-				//	});
+				.projection (function(d) {
+					return [linear(d.x),linear(d.y)];
+					});
+					*/
 		
-
-		d3.json("main2015.geojson", function(error, root){
+		var line = d3.svg.line()
+				//.x(function(d) {return linear(d.x)})
+				//.y(function(d) {return linear(d.y)});
+		
+		d3.json("test.geojson", function(error, root){
 			if (error)
 				return console.error(error);
 			console.log(root.features);
 			
-			svg.selectAll("path")
+			svg.selectAll("polygon")
 				.data(root.features)
 				.enter()
-				.append("path")
+				.append("polygon")
 				.attr("stroke", "#000")
-				.attr("stroke-width", 1)
+				.attr("stroke-width", 0.4)
 				.attr("fill", "AliceBlue")
-				.attr("d", path);
+				.attr("d", line);
 		})
 
 	</script>
