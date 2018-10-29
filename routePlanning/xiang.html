@@ -64,19 +64,21 @@
 				.y(function(d) {return d.y;})
 				.interpolate("linear");
 		
-		d3.json("test.geojson", function(error, root){
+		d3.json("test.json", function(error, root){
 			if (error)
 				return console.error(error);
 			console.log(root.features);
 			
-			svg.selectAll("path")
+			svg.selectAll("polygon")
 				.data(root.features)
 				.enter()
-				.append("path")
+				.append("polygon")
 				.attr("stroke", "#000")
 				.attr("stroke-width", 0.4)
 				.attr("fill", "AliceBlue")
-				.attr("d", line);
+				.attr("points", function(d) {
+					return d.points.join(" ");
+				});
 		})
 
 	</script>
