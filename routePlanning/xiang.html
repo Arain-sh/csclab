@@ -48,6 +48,25 @@
 				.append("g")
 				.attr("transform", "translate(0, 0)");		
 		
+		d3.json("district.json", function(error, data){
+			if (error)
+				return console.error(error);
+			console.log(data.features);
+			
+			svg.selectAll("polygon")
+				.data(data.features)
+				.enter()
+				.append("polygon")
+				.attr("stroke", "#0000")
+				.attr("stroke-width", 0.3)
+				.attr("fill", "#FAEBD7")
+				.attr("points", function(d) {
+					return d.points.map(
+						function(d) {return [linear(d[0]), height - linear(d[1])].join(",");}
+						).join(" ");
+				});
+		});
+		
 		d3.json("main2015.json", function(error, root){
 			if (error)
 				return console.error(error);
@@ -65,7 +84,7 @@
 						function(d) {return [linear(d[0]), height - linear(d[1])].join(",");}
 						).join(" ");
 				});
-		})
+		});
 
 	</script>
 
