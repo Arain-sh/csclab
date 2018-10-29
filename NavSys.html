@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset = "utf-8">
+	<title>Simple Navigating System</title>
+</head>
+
+<style>
+	header {
+		background-color: AliceBlue;
+		color: MidnightBlue;
+		text-align: center;
+		padding: 5px;
+	}
+	
+	section {
+		background-color: AliceBlue;
+		width: 350px;
+		float: left;		
+		padding: 10px;
+	}
+</style>
+
+<body>
+	<header> <h1>Simple Navigating System</h1> </header>
+	<section>
+		<p> <b>Search Module</b> </p>
+		<form> 
+			StartPoint <br>
+			<input type = "text" name = "StartPos"> <br>
+			EndPoint <br>
+			<input type = "text" name = "EndPos">
+			<input type = "submit" value = "SEARCH"> <br>
+			<input type = "radio" name = "plan" value = "path first" checked>PathFirst
+			<input type = "radio" name = "plan" value = "time first">TimeFirst
+			<p> <small>(Note: The StartPoint and EndPoint must be X and Y points, e.g. (2 30),
+			and the range is 0-60)</small> </p>
+		</form>
+		
+		<p> <b>Traffic Status Viewing</b> </p>
+		<form>
+			<select name = "TrafficStatus">
+				<option value = "Currently">Currently</option>
+				<option value = "5 minutes Later">5 minutes Later</option>
+				<option value = "10 minutes Later">10 minutes Later</option>
+				<option value = "20 minutes Later">20 minutes Later</option>
+			</select>
+		</form>
+	</section>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script>
+		var width = 1349;
+		var height = 1349;
+		
+		var xScale = d3.scale.linear()
+					.domain([-13000,18000])
+					.range([0,width]);
+					
+		var yScale = d3.scale.linear()
+					.domain([-13000,16000])
+					.range([0,height]);
+					
+		var svg = d3.select("body")
+				.append("svg")
+				.attr("width", width)
+				.attr("height", height)
+				.append("g")
+				.attr("transform", "translate(0, 0)");		
+		
+		d3.json("district.json", function(error, data){
+			if (error)
+				return console.error(error);
+			console.log(data.features);
+			
+			svg.selectAll("polygon")
+				.data(data.features)
+				.enter()
+				.append("polygon")
+				.attr("stroke", "#000")
+				.attr("stroke-width", 0.3)
+				.attr("fill", "#FAEBD7")
+				.attr("opacity", 0.5)
+				.attr("points", function(d) {
+					return d.points.map(
+						function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
+						).join(" ");
+				});
+		});
+						
+		d3.json("main2015.json", function(error, root){
+			if (error)
+				return console.error(error);
+			console.log(root.features);
+			
+			svg	.append("g")
+				.selectAll("polygon")
+				.data(root.features)
+				.enter()
+				.append("polygon")
+				.attr("stroke", "#000")
+				.attr("stroke-width", 0.1)
+				.attr("fill", "#00FF00")
+				.attr("points", function(d) {
+					return d.points.map(
+						function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
+						).join(" ");
+				});
+		});
+
+	</script>
+
+</body>
+
+</html>
