@@ -71,7 +71,8 @@
 				return console.error(error);
 			console.log(root.features);
 			
-			svg.append("g")
+			svg	.append("g")
+				.selectAll("polygon")
 				.data(root.features)
 				.enter()
 				.append("polygon")
