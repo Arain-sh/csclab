@@ -57,8 +57,8 @@
 		</form>
 	</section>
 	
-	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" class = "center"></script>
-	<script>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
+	<script class = "center">
 		var width = 1349;
 		var height = 1349;
 		
@@ -75,7 +75,7 @@
 				.attr("width", width)
 				.attr("height", height)
 				.append("g")
-				.attr("transform", "translate(10, 10)");		
+				.attr("transform", "translate(0, 0)");		
 		
 		d3.json("district.json", function(error, data){
 			if (error)
