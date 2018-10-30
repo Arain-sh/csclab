@@ -27,9 +27,16 @@
 		width: 70%;
 		background-color: AliceBlue;
 	}
+	
+	.right {
+		float: right;
+		background-color: AliceBlue;
+		margin: auto;
+		width: 80%;
+	}
 </style>
 
-<body class = "center">
+<body>
 	<header> <h1>Simple Navigating System</h1> </header>
 	
 	<section>
@@ -57,6 +64,7 @@
 		</form>
 	</section>
 	
+	<div class = "right">
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
 	<script>
 		var width = 1349;
@@ -114,10 +122,13 @@
 					return d.points.map(
 						function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
 						).join(" ");
-				});
+				})
+				.on("mouseover", function(d,i){return d3.select(this).attr("fill","yellow");})
+				.on("mouseout", function(d,i){return d3.select(this).attr("fill","#00FF00");});
 		});
 
 	</script>
+	</div>
 
 </body>
 
