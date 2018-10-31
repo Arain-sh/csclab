@@ -42,10 +42,13 @@
 	<section>
 		<p> <b>Search Module</b> </p>
 		<form action = "NavSys.php" method = "post"> 
-			StartPoint <br>
-			<input type = "text" name = "StartPos"> <br>
+			StartPoint <br><br>
+			X: <input type = "text" name = "startX" size = "3">
+			Y: <input type = "text" name = "startY" size = "3">
+	
+			<br><br>
 			EndPoint <br>
-			<input type = "text" name = "EndPos">
+			<input type = "text" name = "endX">
 			<input type = "submit" value = "SEARCH"> <br>
 			<input type = "radio" name = "plan" value = "path first" checked>PathFirst
 			<input type = "radio" name = "plan" value = "time first">TimeFirst
