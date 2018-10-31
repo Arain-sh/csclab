@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<body>
-		<h1>表单测试</h1>
-		<form method = "post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-			Name: <input type = "text" name = "name">
-			Email: <input type = "text" name = "email">
-			Website: <input type = "text" name = "website">
-			Comment: <textarea name = "comment" rows = "5" cols = "40"></textarea>
-			Gender:
-				<input type = "radio" name = "gender" value = "female">Female
-				<input type = "radio" name = "gender" value = "male">Male
-		</form>
-		
 		<?php
 			$name = $email = $website = $comment = $gender = "";
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,6 +16,31 @@
 				$data = htmlspecialchars($data);
 				return $data;
 			}
+		?>
+		
+		<h2>表单测试</h2>
+		<form method = "post" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+			Name: <input type = "text" name = "name"> <br><br>
+			Email: <input type = "text" name = "email"> <br><br>
+			Website: <input type = "text" name = "website"> <br><br>
+			Comment: <textarea name = "comment" rows = "5" cols = "40"></textarea> <br><br>
+			Gender:
+				<input type = "radio" name = "gender" value = "female">Female
+				<input type = "radio" name = "gender" value = "male">Male <br><br>
+			<input type = "submit" name = "submit" value = "Submit">
+		</form>
+			
+		<?php
+			echo "<h2> Your Input: </h2>";
+			echo $name;
+			echo "<br>";
+			echo $email;
+			echo "<br>";
+			echo $website;
+			echo "<br>";
+			echo $comment;
+			echo "<br>";
+			echo $gender;
 		?>
 	</body>
 </html>
