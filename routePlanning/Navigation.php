@@ -16,15 +16,7 @@
 		text-align: center;
 		padding: 5px;
 	}
-	
-	section {
-		background-color: AliceBlue;
-		width: 350px;
-		height: 1349px;
-		float: left;		
-		padding: 10px;
-	}
-	
+		
 	.lineH {
 		line-height: 28px;
 	}
@@ -61,20 +53,21 @@
 	?>
 	
 	<header> <h1>Simple Navigating System</h1> </header>
-	<div class = "container">
-		<div class = "row">
-			<div class = "col-lg-4">			
-				<form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
-					<p><b>Search Module</b></p>
-					<span class = "lineH">StartPoint</span> <br>
-					X: <input type = "text" name = "startX" size = "3"> &nbsp;
-					Y: <input type = "text" name = "startY" size = "3">
-					<br>
+
+			<div class = "col-sm-4 col-md-4 col-lg-4">			
+				<form role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
+					<div class = "form-group">
+						<label for = "name">Search Module</label>
 					
-					<span class = "lineH">EndPoint</span> <br>			
-					X: <input type = "text" name = "endX" size = "3"> &nbsp;
-					Y: <input type = "text" name = "endY" size = "3">
-					<input type = "submit" value = "SEARCH">  <br>
+						<span class = "lineH">StartPoint</span> <br>
+						X: <input type = "text" class = "form-control" name = "startX" size = "3"> &nbsp;
+						Y: <input type = "text" class = "form-control" name = "startY" size = "3">
+						<br>
+					
+						<span class = "lineH">EndPoint</span> <br>			
+						X: <input type = "text" class = "form-control" name = "endX" size = "3"> &nbsp;
+						Y: <input type = "text" class = "form-control" name = "endY" size = "3">
+						<input type = "submit" value = "SEARCH">  <br>
 					
 					<span style = "line-height:35px">
 					<input type = "radio" name = "mode" value = "path" checked>PathFirst
@@ -94,7 +87,7 @@
 				</form>			
 			</div>
 		
-			<div class = "col-lg-8">
+			<div class = "col-sm-8 col-md-8 col-lg-8">
 				<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
 				<script>
 					var width = 720;
@@ -159,8 +152,7 @@
 
 				</script>
 			</div>
-		</div>
-	</div>
+
 
 </body>
 
