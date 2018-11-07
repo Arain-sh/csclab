@@ -54,7 +54,7 @@
 	
 	<header> <h1>Simple Navigating System</h1> </header>
 
-			<div class = "col-sm-4 col-md-4 col-lg-4">			
+			<div class = "col-lg-offset-1 col-sm-3 col-md-3 col-lg-3">			
 				<form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
 					<p><b>Search Module</b></p>
 					<span class = "lineH">StartPoint</span> <br>
@@ -91,8 +91,8 @@
 			<div class = "col-sm-8 col-md-8 col-lg-8">
 				<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
 				<script>
-					var width = 1000;
-					var height = 1000;
+					var width = 1080;
+					var height = 1080;
 					
 					var xScale = d3.scale.linear()
 								.domain([-13000,18000])
