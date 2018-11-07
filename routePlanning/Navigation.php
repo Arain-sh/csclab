@@ -2,8 +2,9 @@
 <html>
 
 <head>
-	<meta charset = "utf-8">
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
 	<title>Simple Navigating System</title>
+	<link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel = "stylesheet">
 </head>
 
 <style>
@@ -57,23 +58,27 @@
 		}
 	?>
 	
-	<header> <h1>Simple Navigating System</h1> </header>	
+	<header> <h1>Simple Navigating System</h1> </header>
+	<div class = "container">
+	<div class = "row">
+	<div class = "col-md-4">
 	<section>		
 		<form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
 			<p><b>Search Module</b></p>
 			<span class = "lineH">StartPoint</span> <br>
 			X: <input type = "text" name = "startX" size = "3"> &nbsp;
-			Y: <input type = "text" name = "startY" size = "3">	<?php echo $x1, $y1;?>
+			Y: <input type = "text" name = "startY" size = "3">
 			<br>
 			
 			<span class = "lineH">EndPoint</span> <br>			
 			X: <input type = "text" name = "endX" size = "3"> &nbsp;
-			Y: <input type = "text" name = "endY" size = "3"> <?php echo $x2, $y2;?>
+			Y: <input type = "text" name = "endY" size = "3">
 			<input type = "submit" value = "SEARCH">  <br>
 			
 			<span style = "line-height:35px">
 			<input type = "radio" name = "mode" value = "path" checked>PathFirst
-			<input type = "radio" name = "mode" value = "time">TimeFirst	<?php echo $mode;?></span>	<br>	
+			<input type = "radio" name = "mode" value = "time">TimeFirst
+			</span><br>	
 			
 			<small>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59)</small><br><br>
 			
@@ -84,10 +89,12 @@
 				<option value = "5">5 minutes Later</option>
 				<option value = "10">10 minutes Later</option>
 				<option value = "20">20 minutes Later</option>
-			</select> <?php echo $status;?>
+			</select>
 		</form>
 	</section>
+	</div>
 	
+	<div class = "col-md-8">
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
 	<script>
 		var width = 1349;
@@ -151,6 +158,9 @@
 		});
 
 	</script>
+	</div>
+	</div>
+	</div>
 
 </body>
 
