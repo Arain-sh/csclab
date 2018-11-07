@@ -91,8 +91,8 @@
 			<div class = "col-sm-8 col-md-8 col-lg-8">
 				<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
 				<script>
-					var width = 1280;
-					var height = 1280;
+					var width = 1000;
+					var height = 1000;
 					
 					var xScale = d3.scale.linear()
 								.domain([-13000,18000])
