@@ -47,38 +47,41 @@
 	?>
 	
 	<header> <h1>Simple Navigating System</h1> </header>
-
+	<br>
 	<div class = "col-lg-offset-1 col-sm-3 col-md-3 col-lg-3">			
 		<form class = "form-horizontal" role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
-			<h3>Search Module</h3>
+			<h3>Search Module</h3> <br>
 			<h4>StartPoint</h4>
 			<div class = "form-group">
 			<label class = "col-lg-1 control-label">X</label>
-			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "startX" size = "3"></div>
+			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "startX"></div>
 			<label class = "col-lg-1 control-label">Y</label>
-			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "startY" size = "3"></div>
+			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "startY"></div>
 			</div>
 			
 			<h4>EndPoint</h4>			
-			X: <input type = "text" name = "endX" size = "3"> &nbsp;
-			Y: <input type = "text" name = "endY" size = "3">
-			<input type = "submit" value = "SEARCH">  <br>
+			<div class = "form-group">
+			<label class = "col-lg-1 control-label">X</label>
+			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "endX"></div>
+			<label class = "col-lg-1 control-label">Y</label>
+			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "endY"></div>		
+			<div class = "col-lg-2"><input type = "submit" class = "btn" value = "SEARCH"></div>
+			</div>
 			
-			<span style = "line-height:35px">
-			<input type = "radio" name = "mode" value = "path first">PathFirst
-			<input type = "radio" name = "mode" value = "time first">TimeFirst	</span>	<br>
-			</span><br>	
+			<div class = "radio">
+			<div class = "col-lg-2"><input type = "radio" name = "mode" value = "path first">PathFirst</div>
+			<div class = "col-lg-offset-1 col-lg-2"><input type = "radio" name = "mode" value = "time first">TimeFirst</div>
+			</div>			
+			<p>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59)</p><br>
 			
-			<small>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59)</small><br><br>
-			
-			<p><b>Traffic States Viewing</b></p>
+			<h3>Traffic States Viewing</h3>
 			<select name = "TrafficStates">
 				<option value = "-1"> </option>
 				<option value = "0">Currently</option>
 				<option value = "5">5 minutes Later</option>
 				<option value = "10">10 minutes Later</option>
 				<option value = "20">20 minutes Later</option>
-			</select> <br>
+			</select> <br> <br>
 			<?php
 				echo "The StartPoint is: ".$x1." ".$y1."<br>";
 				echo "The EndPoint is: ".$x2." ".$y2."<br>";
