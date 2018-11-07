@@ -55,20 +55,21 @@
 	<header> <h1>Simple Navigating System</h1> </header>
 
 			<div class = "col-sm-4 col-md-4 col-lg-4">			
-				<form role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
-					<div class = "form-group">
-						<label for = "name">Search Module</label>
+				<form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
+					<p><b>Search Module</b></p>
+					<span class = "lineH">StartPoint</span> <br>
+					X: <input type = "text" name = "startX" size = "3"> &nbsp;
+					Y: <input type = "text" name = "startY" size = "3">	
+					<br>
 					
-						<span class = "lineH">StartPoint</span> <br>
-						X: <input type = "text" class = "form-control" name = "startX" size = "3"> &nbsp;
-						Y: <input type = "text" class = "form-control" name = "startY" size = "3">
-						<br>
+					<span class = "lineH">EndPoint</span> <br>			
+					X: <input type = "text" name = "endX" size = "3"> &nbsp;
+					Y: <input type = "text" name = "endY" size = "3">
+					<input type = "submit" value = "SEARCH">  <br>
 					
-						<span class = "lineH">EndPoint</span> <br>			
-						X: <input type = "text" class = "form-control" name = "endX" size = "3"> &nbsp;
-						Y: <input type = "text" class = "form-control" name = "endY" size = "3">
-						<input type = "submit" value = "SEARCH">  <br>
-					
+					<span style = "line-height:35px">
+					<input type = "radio" name = "plan" value = "path first" checked>PathFirst
+					<input type = "radio" name = "plan" value = "time first">TimeFirst	</span>	<br>
 					<span style = "line-height:35px">
 					<input type = "radio" name = "mode" value = "path" checked>PathFirst
 					<input type = "radio" name = "mode" value = "time">TimeFirst
@@ -90,8 +91,8 @@
 			<div class = "col-sm-8 col-md-8 col-lg-8">
 				<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
 				<script>
-					var width = 720;
-					var height = 720;
+					var width = 1280;
+					var height = 1280;
 					
 					var xScale = d3.scale.linear()
 								.domain([-13000,18000])
