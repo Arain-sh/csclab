@@ -62,8 +62,8 @@
 			<input type = "submit" value = "SEARCH">  <br>
 			
 			<span style = "line-height:35px">
-			<input type = "radio" name = "plan" value = "path first" checked>PathFirst
-			<input type = "radio" name = "plan" value = "time first">TimeFirst	</span>	<br>
+			<input type = "radio" name = "mode" value = "path first" checked>PathFirst
+			<input type = "radio" name = "mode" value = "time first">TimeFirst	</span>	<br>
 			</span><br>	
 			
 			<small>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59)</small><br><br>
@@ -75,11 +75,11 @@
 				<option value = "5">5 minutes Later</option>
 				<option value = "10">10 minutes Later</option>
 				<option value = "20">20 minutes Later</option>
-			</select>
+			</select> <br>
 			<?php
-				echo "The StartPoint is: ".$x1.", ".$y1."<br>";
-				echo "The EndPoint is: ".$x2.", ".$y2."<br>";
-				echo "The Mode is: ".$mode." first<br>";
+				echo "The StartPoint is: ".$x1." ".$y1."<br>";
+				echo "The EndPoint is: ".$x2." ".$y2."<br>";
+				echo "The Mode is: ".$mode."<br>";
 				echo "The traffic state view choose ".$status;
 			?>
 		</form>			
