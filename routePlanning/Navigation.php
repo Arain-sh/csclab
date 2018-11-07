@@ -63,44 +63,42 @@
 	<header> <h1>Simple Navigating System</h1> </header>
 	<div class = "container">
 		<div class = "row">
-			<div class = "col-md-4">
-				<section>		
-					<form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
-						<p><b>Search Module</b></p>
-						<span class = "lineH">StartPoint</span> <br>
-						X: <input type = "text" name = "startX" size = "3"> &nbsp;
-						Y: <input type = "text" name = "startY" size = "3">
-						<br>
-						
-						<span class = "lineH">EndPoint</span> <br>			
-						X: <input type = "text" name = "endX" size = "3"> &nbsp;
-						Y: <input type = "text" name = "endY" size = "3">
-						<input type = "submit" value = "SEARCH">  <br>
-						
-						<span style = "line-height:35px">
-						<input type = "radio" name = "mode" value = "path" checked>PathFirst
-						<input type = "radio" name = "mode" value = "time">TimeFirst
-						</span><br>	
-						
-						<small>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59)</small><br><br>
-						
-						<p><b>Traffic States Viewing</b></p>
-						<select name = "TrafficStates">
-							<option value = "-1"> </option>
-							<option value = "0">Currently</option>
-							<option value = "5">5 minutes Later</option>
-							<option value = "10">10 minutes Later</option>
-							<option value = "20">20 minutes Later</option>
-						</select>
-					</form>
-				</section>
+			<div class = "col-md-4">			
+				<form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
+					<p><b>Search Module</b></p>
+					<span class = "lineH">StartPoint</span> <br>
+					X: <input type = "text" name = "startX" size = "3"> &nbsp;
+					Y: <input type = "text" name = "startY" size = "3">
+					<br>
+					
+					<span class = "lineH">EndPoint</span> <br>			
+					X: <input type = "text" name = "endX" size = "3"> &nbsp;
+					Y: <input type = "text" name = "endY" size = "3">
+					<input type = "submit" value = "SEARCH">  <br>
+					
+					<span style = "line-height:35px">
+					<input type = "radio" name = "mode" value = "path" checked>PathFirst
+					<input type = "radio" name = "mode" value = "time">TimeFirst
+					</span><br>	
+					
+					<small>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59)</small><br><br>
+					
+					<p><b>Traffic States Viewing</b></p>
+					<select name = "TrafficStates">
+						<option value = "-1"> </option>
+						<option value = "0">Currently</option>
+						<option value = "5">5 minutes Later</option>
+						<option value = "10">10 minutes Later</option>
+						<option value = "20">20 minutes Later</option>
+					</select>
+				</form>			
 			</div>
 		
 			<div class = "col-md-8">
 				<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
 				<script>
-					var width = 1349;
-					var height = 1349;
+					var width = 720;
+					var height = 720;
 					
 					var xScale = d3.scale.linear()
 								.domain([-13000,18000])
