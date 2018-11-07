@@ -63,7 +63,7 @@
 	<header> <h1>Simple Navigating System</h1> </header>
 	<div class = "container">
 		<div class = "row">
-			<div class = "col-md-4">			
+			<div class = "col-lg-4">			
 				<form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
 					<p><b>Search Module</b></p>
 					<span class = "lineH">StartPoint</span> <br>
@@ -94,7 +94,7 @@
 				</form>			
 			</div>
 		
-			<div class = "col-md-8">
+			<div class = "col-lg-8">
 				<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
 				<script>
 					var width = 720;
