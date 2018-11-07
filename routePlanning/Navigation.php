@@ -49,20 +49,23 @@
 	<header> <h1>Simple Navigating System</h1> </header>
 
 	<div class = "col-lg-offset-1 col-sm-3 col-md-3 col-lg-3">			
-		<form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
-			<p><b>Search Module</b></p>
-			<span class = "lineH">StartPoint</span> <br>
-			X: <input type = "text" name = "startX" size = "3"> &nbsp;
-			Y: <input type = "text" name = "startY" size = "3">	
-			<br>
+		<form class = "form-horizontal" role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
+			<h3>Search Module</h3>
+			<h4>StartPoint</h4>
+			<div class = "form-group">
+			<label class = "col-lg-1 control-label">X</label>
+			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "startX" size = "3"></div>
+			<label class = "col-lg-1 control-label">Y</label>
+			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "startY" size = "3"></div>
+			</div>
 			
-			<span class = "lineH">EndPoint</span> <br>			
+			<h4>EndPoint</h4>			
 			X: <input type = "text" name = "endX" size = "3"> &nbsp;
 			Y: <input type = "text" name = "endY" size = "3">
 			<input type = "submit" value = "SEARCH">  <br>
 			
 			<span style = "line-height:35px">
-			<input type = "radio" name = "mode" value = "path first" checked>PathFirst
+			<input type = "radio" name = "mode" value = "path first">PathFirst
 			<input type = "radio" name = "mode" value = "time first">TimeFirst	</span>	<br>
 			</span><br>	
 			
@@ -80,7 +83,7 @@
 				echo "The StartPoint is: ".$x1." ".$y1."<br>";
 				echo "The EndPoint is: ".$x2." ".$y2."<br>";
 				echo "The Mode is: ".$mode."<br>";
-				echo "The traffic state view choose ".$status;
+				echo "The traffic state view choose ".$status; 
 			?>
 		</form>			
 	</div>
