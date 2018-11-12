@@ -89,3 +89,4 @@ def routePlanning(x1,y1,x2,y2,time):
 speed = [np.nan for i in range(3600)]
 path = routePlanning(1,20,30,40,'08:00')
 print path
+print "Successed..."
