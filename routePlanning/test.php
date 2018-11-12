@@ -75,7 +75,7 @@
 			echo "<br>";
 			echo $gender;
 			
-			$python = "python test.py";
+			$python = `python test.py`;
 			echo $python;
 		?>
 		
