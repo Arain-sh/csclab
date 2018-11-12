@@ -74,6 +74,10 @@
 			echo $comment;
 			echo "<br>";
 			echo $gender;
+			
+			$python = "python test.py";
+			echo $python;
 		?>
+		
 	</body>
 </html>
