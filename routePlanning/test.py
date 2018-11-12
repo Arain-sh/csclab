@@ -1,2 +1,3 @@
-def test():
-	print("Hello world")
+hello = "hello"
+world = "world"
+print hello + " " + world
