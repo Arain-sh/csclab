@@ -151,7 +151,9 @@
 							).join(" ");
 					})
 					.on("mouseover", function(d,i){return d3.select(this).attr("fill","yellow");})
-					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#00FF00");});
+					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#00FF00");})
+					.append("title")
+					.text(function(d) {return d.properties.路名});
 			});
 
 		</script>
