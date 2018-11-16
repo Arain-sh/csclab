@@ -129,7 +129,9 @@
 						return d.points.map(
 							function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
 							).join(" ");
-					});
+					})
+					.append("title")
+					.text(function(d) {return d.properties.名称;});
 			});
 							
 			d3.json("main2015.json", function(error, root){
@@ -153,7 +155,7 @@
 					.on("mouseover", function(d,i){return d3.select(this).attr("fill","yellow");})
 					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#00FF00");})
 					.append("title")
-					.text(function(d) {return d.properties.路名});
+					.text(function(d) {return d.properties.路名;});
 			});
 
 		</script>
