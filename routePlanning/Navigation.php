@@ -105,6 +105,14 @@
 						.domain([-13000,16000])
 						.range([0,height]);
 						
+			var zoom = d3.behavior.zoom()
+						.scaleExtent([1,10])
+						.on("zoom",zoomed);
+			function zoomed() {
+				d3.select(this)
+				.attr("transform","translate("+d3.event.translate+")scale("+d3.event.scale+")");
+			}
+			
 			var svg = d3.select("body")
 					.append("svg")
 					.attr("width", width)
@@ -140,6 +148,7 @@
 				console.log(root.features);
 				
 				svg	.append("g")
+					.call(zoom)
 					.selectAll("polygon")
 					.data(root.features)
 					.enter()
