@@ -115,9 +115,9 @@
 			
 			var svg = d3.select("body")
 					.append("svg")
+					.call(zoom)
 					.attr("width", width)
-					.attr("height", height)
-					.append("g")
+					.attr("height", height)				
 					.attr("transform", "translate(0, 0)");		
 			
 			d3.json("district.json", function(error, data){
@@ -125,7 +125,8 @@
 					return console.error(error);
 				console.log(data.features);
 				
-				svg.selectAll("polygon")
+				svg .append("g")
+				    .selectAll("polygon")
 					.data(data.features)
 					.enter()
 					.append("polygon")
@@ -148,7 +149,7 @@
 				console.log(root.features);
 				
 				svg	.append("g")
-					.call(zoom)
+					//.call(zoom)
 					.selectAll("polygon")
 					.data(root.features)
 					.enter()
