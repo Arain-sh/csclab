@@ -111,9 +111,6 @@
 						.translate([0,0])
 						.on("zoom",zoomed);
 			function zoomed() {
-				x = d3.event.translate[0];
-				y = d3.event.translate[1];
-				s = d3.event.scale;
 				d3.select(this)
 				.attr("transform","translate("+d3.event.translate+")scale("+d3.event.scale+")");
 			}
@@ -130,6 +127,7 @@
 				console.log(data.features);
 				
 				svg .append("g")
+					.call(zoom)
 				    .selectAll("polygon")
 					.data(data.features)
 					.enter()
@@ -153,7 +151,7 @@
 				console.log(root.features);
 				
 				svg	.append("g")
-					//.call(zoom)
+					.call(zoom)
 					.selectAll("polygon")
 					.data(root.features)
 					.enter()
@@ -172,21 +170,6 @@
 					.text(function(d) {return d.properties.路名;});
 			});
 			
-			d3.selectAll("polygon").call(zoom);
-			/*
-			d3.selectAll("polygon").on("click",function(){
-				d3.select("this")
-				.transition().duration(250).tween("zoom",function(){
-					var xnew = this.getAttribute("x")*1;
-					var ynew = this.getAttribute("y")*1;
-					var si = d3.interpolate(s, 4);
-					var xi = d3.interpolate(x, width/2-4*xnew);
-					var yi = d3.interpolate(y, height/2-4*ynew);
-					return function(d) {
-						svg.call(zoom.translate([xi[d],yi[d]]).scale(si[t]).event);
-					}
-				});
-			})*/
 
 		</script>
 	</div>
