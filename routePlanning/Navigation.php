@@ -46,7 +46,7 @@
 		}
 	?>
 	
-	<header> <h1>Simple Navigating System</h1> </header>
+	<header> <h1>Simple Routing System</h1> </header>
 	<br>
 	<div class = "col-lg-offset-1 col-sm-3 col-md-3 col-lg-3">			
 		<form class = "form-horizontal" role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post"> 
@@ -67,11 +67,12 @@
 			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "endY"></div>		
 			<div class = "col-lg-2"><input type = "submit" class = "btn" value = "SEARCH"></div>
 			</div>
-			
+			<!-- 
 			<div class = "radio">
 			<div class = "col-lg-2"><input type = "radio" name = "mode" value = "path first">PathFirst</div>
 			<div class = "col-lg-offset-1 col-lg-2"><input type = "radio" name = "mode" value = "time first">TimeFirst</div>
-			</div>			
+			</div> 
+			-->			
 			<p>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59)</p><br>
 			
 			<h3>Traffic States Viewing</h3>
@@ -81,13 +82,7 @@
 				<option value = "5">5 minutes Later</option>
 				<option value = "10">10 minutes Later</option>
 				<option value = "20">20 minutes Later</option>
-			</select> <br> <br>
-			<?php
-				echo "The StartPoint is: ".$x1." ".$y1."<br>";
-				echo "The EndPoint is: ".$x2." ".$y2."<br>";
-				echo "The Mode is: ".$mode."<br>";
-				echo "The traffic state view choose ".$status; 
-			?>
+			</select> <br> <br>						
 		</form>			
 	</div>
 
