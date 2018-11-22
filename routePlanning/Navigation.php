@@ -172,6 +172,8 @@
 					.text(function(d) {return d.properties.路名;});
 			});
 			
+			d3.selectAll("polygon").call(zoom);
+			/*
 			d3.selectAll("polygon").on("click",function(){
 				d3.select("this")
 				.transition().duration(250).tween("zoom",function(){
@@ -184,7 +186,7 @@
 						svg.call(zoom.translate([xi[d],yi[d]]).scale(si[t]).event);
 					}
 				});
-			})
+			})*/
 
 		</script>
 	</div>
