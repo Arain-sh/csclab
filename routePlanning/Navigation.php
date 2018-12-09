@@ -165,6 +165,30 @@
 					.text(function(d) {return d.properties.路名;});
 			});
 			
+			d3.json("bottom.json", function(error, root){
+				if (error)
+					return console.error(error);
+				console.log(root.features);
+				
+				svg	.append("g")
+					//.call(zoom)
+					.selectAll("polygon")
+					.data(root.features)
+					.enter()
+					.append("polygon")
+					.attr("stroke", "#000")
+					.attr("stroke-width", 0.1)
+					.attr("fill", "#FF00FF")
+					.attr("points", function(d) {
+						return d.points.map(
+							function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
+							).join(" ");
+					})
+					.on("mouseover", function(d,i){return d3.select(this).attr("fill","yellow");})
+					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#FF00FF");})
+					.append("title")
+					.text(function(d) {return d.properties.路名;});
+			});
 
 		</script>
 	</div>
