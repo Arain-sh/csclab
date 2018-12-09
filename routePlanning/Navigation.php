@@ -65,10 +65,13 @@
 			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "endX"></div>
 			<label class = "col-lg-1 control-label">Y</label>
 			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "endY"></div>			
-			<div class = "col-lg-2"><input type = "submit" class = "btn" value = "SEARCH"></div>
+			
 			</div>
-			<label class = "col-lg-1 control-label">time</label>
-			<div class = "col-lg-5"><input type = "text" class = "form-control" name = "time"></div>		
+			<div class = "form-group">
+			<label class = "col-lg-2 control-label">time</label>
+			<div class = "col-lg-4"><input type = "text" class = "form-control" name = "time"></div>
+			<div class = "col-lg-2"><input type = "submit" class = "btn" value = "SEARCH"></div>
+			</div>			
 			<p>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59)</p><br>
 			
 			<h3>Traffic States Viewing</h3>
