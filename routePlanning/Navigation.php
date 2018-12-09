@@ -72,8 +72,9 @@
 			<div class = "col-lg-5"><input type = "text" class = "form-control" name = "time"></div>
 			<div class = "col-lg-2"><input type = "submit" class = "btn" value = "SEARCH"></div>
 			</div>			
-			<p>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59)</p><br>
+			<p>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59, and the time should be "XX:XX", i.e. 08:00)</p><br>
 			
+			<!--
 			<h3>Traffic States Viewing</h3>
 			<select name = "TrafficStates">
 				<option value = "-1"> </option>
@@ -81,7 +82,7 @@
 				<option value = "5">5 minutes Later</option>
 				<option value = "10">10 minutes Later</option>
 				<option value = "20">20 minutes Later</option>
-			</select> <br> <br>						
+			</select> <br> <br>	-->					
 		</form>			
 	</div>
 
