@@ -140,6 +140,7 @@
 					.text(function(d) {return d.properties.名称;});
 			});
 							
+			/*
 			d3.json("main2015.json", function(error, root){
 				if (error)
 					return console.error(error);
@@ -163,7 +164,7 @@
 					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#00FF00");})
 					.append("title")
 					.text(function(d) {return d.properties.路名;});
-			});
+			});*/
 			
 			d3.json("bottom.json", function(error, root){
 				if (error)
@@ -178,14 +179,14 @@
 					.append("polygon")
 					.attr("stroke", "#000")
 					.attr("stroke-width", 0.1)
-					.attr("fill", "#FF00FF")
+					.attr("fill", "#000080")
 					.attr("points", function(d) {
 						return d.points.map(
 							function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
 							).join(" ");
 					})
 					.on("mouseover", function(d,i){return d3.select(this).attr("fill","yellow");})
-					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#FF00FF");})
+					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#000080");})
 					.append("title")
 					.text(function(d) {return d.properties.路名;});
 			});
