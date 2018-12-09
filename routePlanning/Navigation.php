@@ -130,7 +130,7 @@
 					.attr("stroke", "#000")
 					.attr("stroke-width", 0.3)
 					.attr("fill", "#FAEBD7")
-					.attr("opacity", 0.8)
+					.attr("opacity", 0.2)
 					.attr("points", function(d) {
 						return d.points.map(
 							function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
