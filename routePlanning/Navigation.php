@@ -29,14 +29,14 @@
 
 <body class = "bgcolor">
 	<?php
-		$x1 = $y1 = $x2 = $y2 = $mode = $status = "";
+		$x1 = $y1 = $x2 = $y2 = $time = "";
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$x1 = test_input($_POST["startX"]);
 			$y1 = test_input($_POST["startY"]);
 			$x2 = test_input($_POST["endX"]);
 			$y2 = test_input($_POST["endY"]);
-			$mode = test_input($_POST["mode"]);
-			$status = test_input($_POST["TrafficStates"]);
+			$time = test_input($_POST["time"]);
+			
 		}
 		function test_input($data) {
 			$data = trim($data);
@@ -72,7 +72,8 @@
 			<div class = "col-lg-5"><input type = "text" class = "form-control" name = "time"></div>
 			<div class = "col-lg-2"><input type = "submit" class = "btn" value = "SEARCH"></div>
 			</div>			
-			<p>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59, and the time should be "XX:XX", i.e. 08:00)</p><br>
+			<p>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59, 
+			and the time should be "xx:xx", such as 08:00)</p><br>
 			
 			<!--
 			<h3>Traffic States Viewing</h3>
@@ -165,6 +166,56 @@
 					.append("title")
 					.text(function(d) {return d.properties.路名;});
 			});
+			
+			d3.json("sub2015.json", function(error, root){
+				if (error)
+					return console.error(error);
+				console.log(root.features);
+				
+				svg	.append("g")
+					.call(zoom)
+					.selectAll("polygon")
+					.data(root.features)
+					.enter()
+					.append("polygon")
+					.attr("stroke", "#000")
+					.attr("stroke-width", 0.1)
+					.attr("fill", "#00FF00")
+					.attr("points", function(d) {
+						return d.points.map(
+							function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
+							).join(" ");
+					})
+					.on("mouseover", function(d,i){return d3.select(this).attr("fill","yellow");})
+					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#00FF00");})
+					.append("title")
+					.text(function(d) {return d.properties.路名;});
+			});	
+			
+			d3.json("ord2015.json", function(error, root){
+				if (error)
+					return console.error(error);
+				console.log(root.features);
+				
+				svg	.append("g")
+					.call(zoom)
+					.selectAll("polygon")
+					.data(root.features)
+					.enter()
+					.append("polygon")
+					.attr("stroke", "#000")
+					.attr("stroke-width", 0.1)
+					.attr("fill", "#00FF00")
+					.attr("points", function(d) {
+						return d.points.map(
+							function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
+							).join(" ");
+					})
+					.on("mouseover", function(d,i){return d3.select(this).attr("fill","yellow");})
+					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#00FF00");})
+					.append("title")
+					.text(function(d) {return d.properties.路名;});
+			});	
 			
 			d3.json("bottom.json", function(error, root){
 				if (error)
