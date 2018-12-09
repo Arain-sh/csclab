@@ -177,8 +177,8 @@
 					.data(root.features)
 					.enter()
 					.append("polygon")
-					.attr("stroke", "#000")
-					.attr("stroke-width", 1)
+					.attr("stroke", "#000080")
+					.attr("stroke-width", 1.5)
 					.attr("fill", "#000080")
 					.attr("points", function(d) {
 						return d.points.map(
