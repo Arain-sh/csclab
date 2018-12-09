@@ -130,7 +130,7 @@
 					.attr("stroke", "#000")
 					.attr("stroke-width", 0.3)
 					.attr("fill", "#FAEBD7")
-					.attr("opacity", 0.5)
+					.attr("opacity", 0.8)
 					.attr("points", function(d) {
 						return d.points.map(
 							function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
@@ -140,7 +140,7 @@
 					.text(function(d) {return d.properties.名称;});
 			});
 							
-			/*
+			
 			d3.json("main2015.json", function(error, root){
 				if (error)
 					return console.error(error);
@@ -164,7 +164,7 @@
 					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#00FF00");})
 					.append("title")
 					.text(function(d) {return d.properties.路名;});
-			});*/
+			});
 			
 			d3.json("bottom.json", function(error, root){
 				if (error)
