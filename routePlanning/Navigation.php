@@ -178,7 +178,7 @@
 					.enter()
 					.append("polygon")
 					.attr("stroke", "#000")
-					.attr("stroke-width", 0.1)
+					.attr("stroke-width", 1)
 					.attr("fill", "#000080")
 					.attr("points", function(d) {
 						return d.points.map(
