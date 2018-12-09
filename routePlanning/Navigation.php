@@ -64,15 +64,11 @@
 			<label class = "col-lg-1 control-label">X</label>
 			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "endX"></div>
 			<label class = "col-lg-1 control-label">Y</label>
-			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "endY"></div>		
+			<div class = "col-lg-2"><input type = "text" class = "form-control" name = "endY"></div>			
 			<div class = "col-lg-2"><input type = "submit" class = "btn" value = "SEARCH"></div>
 			</div>
-			<!-- 
-			<div class = "radio">
-			<div class = "col-lg-2"><input type = "radio" name = "mode" value = "path first">PathFirst</div>
-			<div class = "col-lg-offset-1 col-lg-2"><input type = "radio" name = "mode" value = "time first">TimeFirst</div>
-			</div> 
-			-->			
+			<label class = "col-lg-1 control-label">time</label>
+			<div class = "col-lg-5"><input type = "text" class = "form-control" name = "time"></div>		
 			<p>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59)</p><br>
 			
 			<h3>Traffic States Viewing</h3>
