@@ -77,8 +77,8 @@
 		
 		<?php
 		echo "$x1\n$x2\n";
-		exec("python test.py 23 5 4 30 08:00", $output);
-		echo "$output[0]";
+		exec("python test.py 23 5 4 30 08:00", $out);
+		echo "$out";
 		?>
 		</form>		
 	</div>
