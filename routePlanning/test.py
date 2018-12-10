@@ -1,6 +1,9 @@
 import pickle
+import json
 import numpy as np
 import pandas as pd
+import shapefile
+import geopandas as gp
 import sys
 
 def intersection2graph():
@@ -30,10 +33,10 @@ def grid2graph():
 			graph[i].append(i+60)
 	return graph
 
-def routePlanning(x1,y1,x2,y2,time):
+def top(x1,y1,x2,y2,time):
 	vStamp = (int(time[0:2])*60+int(time[3:5]))//2
 	qStamp = (int(time[0:2])*60+int(time[3:5]))//10
-	data = pd.read_csv('20150525.csv')	
+	data = pd.read_csv('./static.csv')	
 	data = data[data.timestamp == [vStamp]]
 	data = data.fillna(data['value'].mean())
 	data['value'] = data['value'].max() + data['value'].min() - data['value']
@@ -41,15 +44,15 @@ def routePlanning(x1,y1,x2,y2,time):
 	
 	data['posi'] = data.x * 60 + data.y
 	for i in range(2866):
-		speed[int(data.iloc[i].posi)] = data.iloc[i].value
+		ss[int(data.iloc[i].posi)] = data.iloc[i].value
 
 	weights = [{} for i in range(3600)]
 	graph = grid2graph()
 	for i in range(3600):
 		for j in graph[i]:
-			if speed[j] is np.nan:
+			if ss[j] is np.nan:
 				continue
-			weights[i][j] = speed[j]
+			weights[i][j] = ss[j]
 	
 
 	start = x1*60 + y1
@@ -85,9 +88,48 @@ def routePlanning(x1,y1,x2,y2,time):
 		# print(start,length[start],path[start])
 	return path[end]
 
-print(sys.argv[1])	
-speed = [np.nan for i in range(3600)]
-path = routePlanning(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
-print(sys.argv[2])
+def bottom(x1,y1,x2,y2,time):
+	upper = top(x1,y1,x2,y2,time)
+	seg = pickle.Unpickler(open('./SurfaceRoad.dat','rb')).load()
+	tt = 0
+	bottom = []
+	for ele in upper:
+		x = ele // 60
+		y = ele % 60
+		length = max(seg[x][y].values())
+		print(x,y,ss[ele],length)
+		# print(length,seg[x][y])
+		for key in seg[x][y]:
+			bottom.append(key)
+	
+	road = ['main2015','sub2015','ord2015']
+	features = []
+	for roadtype in road:
+		roadfile = gp.GeoDataFrame.from_file('./shp/'+roadtype+'.shp',encoding = 'gb18030')
+		sf = shapefile.Reader('./shp/'+roadtype+'.shp')		
+		for i in range(len(sf.records())):
+			if roadfile.iloc[i]['BM_CODE'] not in bottom:
+				continue
+			feature = {}
+			feature['properties'] = {'路名':roadfile.iloc[i]['路名'], 'BM_CODE':roadfile.iloc[i]['BM_CODE']}
+			feature['points'] = list(map(list,sf.shape(i).points))
+			features.append(feature)
+	geojson = {'type':'FeatureCollection','features':features}
+	with open('./path.json','w',encoding = 'utf-8') as f:
+		json.dump(geojson, f, ensure_ascii = False)
+
+	return upper
+
+ss = [np.nan for i in range(3600)]
+path = top(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]),int(sys.argv[4]),sys.argv[5])
+road = pickle.Unpickler(open('./SurfaceRoad.dat','rb')).load()
+tt = 0
+for ele in path:
+	x = ele // 60
+	y = ele % 60
+	length = max(road[x][y].values())
+	tt += length/(ss[ele]*5/18)
+# path = bottom(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
 print(path)
-print('Hello')
+print(tt)
+# print(tt)
