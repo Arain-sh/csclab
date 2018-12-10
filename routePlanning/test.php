@@ -76,8 +76,8 @@
 			and the time should be "xx:xx", such as 08:00)</p><br>
 		
 		<?php
-		echo "$x1\n$x2";
-		$output = exec("python test.py 23 $y1 $x2 $y2 $time");
+		echo "$x1\n$x2\n";
+		exec("python test.py 23 5 4 30 08:00", $output);
 		echo "$output";
 		?>
 		</form>		
