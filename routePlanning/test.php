@@ -76,9 +76,9 @@
 			and the time should be "xx:xx", such as 08:00)</p><br>
 		
 		<?php
-		echo "$x1";
-		$output = shell_exec("python3 test.py $x1 $y1 $x2 $y2 $time");
-		var_dump($output);
+		echo "$x1\n";
+		$output = exec("C:Python36\python.exe test.py $x1 $y1 $x2 $y2 $time");
+		echo "$output";
 		?>
 		</form>		
 	</div>
