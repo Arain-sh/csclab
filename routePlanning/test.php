@@ -74,11 +74,13 @@
 			</div>			
 			<p>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59, 
 			and the time should be "xx:xx", such as 08:00)</p><br>
+		
 		<?php
 		echo "$x1";
-		system("test.py $x1 $y1 $x2 $y2 $time");
+		$output = shell_exec("python3 test.py $x1 $y1 $x2 $y2 $time");
+		var_dump($output);
 		?>
-		</form>			
+		</form>		
 	</div>
 	
 	
