@@ -2,7 +2,13 @@
 # import numpy as np
 # import pandas as pd
 import sys
-
+file = open('test.txt','w')
+file.write(sys.argv[1]+'\n')
+file.write(sys.argv[2]+'\n')
+file.write(sys.argv[3]+'\n')
+file.write(sys.argv[4]+'\n')
+file.write(sys.argv[5]+'\n')
+print(sys.argv[4])
 # def intersection2graph():
 # 	da = pickle.Unpickler(open('CrossLocation.dat','rb')).load()
 # 	graph = [[] for i in range(len(da))]
@@ -87,8 +93,4 @@ import sys
 	
 # speed = [np.nan for i in range(3600)]
 # path = routePlanning(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
-print(sys.argv[1])
-print(sys.argv[2])
-print(sys.argv[3])
-print(sys.argv[4])
-print(sys.argv[5])
+
