@@ -84,8 +84,10 @@ def routePlanning(x1,y1,x2,y2,time):
 		path[start] = path[parent]+[start]
 		# print(start,length[start],path[start])
 	return path[end]
-	
+
+print(sys.argv[1])	
 speed = [np.nan for i in range(3600)]
 path = routePlanning(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
+print(sys.argv[2])
 print(path)
 print('Hello')
