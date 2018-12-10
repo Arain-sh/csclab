@@ -1,7 +1,7 @@
 import pickle
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+import sys
 
 def intersection2graph():
 	da = pickle.Unpickler(open('CrossLocation.dat','rb')).load()
@@ -33,8 +33,6 @@ def grid2graph():
 def routePlanning(x1,y1,x2,y2,time):
 	vStamp = (int(time[0:2])*60+int(time[3:5]))//2
 	qStamp = (int(time[0:2])*60+int(time[3:5]))//10
-
-
 	data = pd.read_csv('20150525.csv')	
 	data = data[data.timestamp == [vStamp]]
 	data = data.fillna(data['value'].mean())
@@ -86,7 +84,8 @@ def routePlanning(x1,y1,x2,y2,time):
 		path[start] = path[parent]+[start]
 		# print(start,length[start],path[start])
 	return path[end]
-speed = [np.nan for i in range(3600)]
-path = routePlanning(1,20,30,40,'08:00')
-print path
-print "Successed..."
+
+if __name__ == '__main__':	
+	speed = [np.nan for i in range(3600)]
+	path = routePlanning(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
+	print (path)
