@@ -44,7 +44,6 @@
 			$data = htmlspecialchars($data);
 			return $data;
 		}
-		system("test.py $x1 $y1 $x2 $y2 $time");
 	?>
 	
 	<header> <h1>Simple Routing System</h1> </header>
@@ -75,13 +74,16 @@
 			</div>			
 			<p>(Note: The StartPoint and EndPoint must be integers, range from 0 to 59, 
 			and the time should be "xx:xx", such as 08:00)</p><br>
-					
+		<?php
+		echo "$x1";
+		system("test.py $x1 $y1 $x2 $y2 $time");
+		?>
 		</form>			
 	</div>
 	
-	<?php
 	
-	?>
+		
+	
 	<div class = "col-sm-8 col-md-8 col-lg-8">
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
 		<script>
@@ -134,8 +136,7 @@
 					})
 					.append("title")
 					.text(function(d) {return d.properties.名称;});
-			});							
-
+			});	
 		</script>
 	</div>
 </body>
