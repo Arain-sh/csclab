@@ -86,6 +86,10 @@ def routePlanning(x1,y1,x2,y2,time):
 	return path[end]
 
 if __name__ == '__main__':	
-	speed = [np.nan for i in range(3600)]
-	path = routePlanning(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
-	print (path)
+	# speed = [np.nan for i in range(3600)]
+	# path = routePlanning(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
+	print(sys.argv[1])
+	print(sys.argv[2])
+	print(sys.argv[3])
+	print(sys.argv[4])
+	print(sys.argv[5])
