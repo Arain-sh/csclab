@@ -5,6 +5,16 @@ import pandas as pd
 import shapefile
 import geopandas as gp
 import sys
+import matplotlib.pyplot as plt
+
+seg = pickle.Unpickler(open('./SurfaceRoad.dat','rb')).load()
+roadLen = [np.nan]*3600
+for i in range(len(roadLen)):
+	if seg[i//60][i%60] == {}:
+		continue
+	roadLen[i] = max(seg[i//60][i%60].values())
+roadLen = np.array(roadLen)
+Max, Min = np.nanmax(roadLen), np.nanmin(roadLen)
 
 def intersection2graph():
 	da = pickle.Unpickler(open('CrossLocation.dat','rb')).load()
@@ -33,33 +43,37 @@ def grid2graph():
 			graph[i].append(i+60)
 	return graph
 
-def top(x1,y1,x2,y2,time):
-	vStamp = (int(time[0:2])*60+int(time[3:5]))//2
-	qStamp = (int(time[0:2])*60+int(time[3:5]))//10
+def topRouting1(x1,y1,x2,y2,time):
+	# Routing algorithm with traffic states
+	stamp = (int(time[0:2])*60+int(time[3:5]))//2
 	data = pd.read_csv('./static.csv')	
-	data = data[data.timestamp == [vStamp]]
+	data = data[data.timestamp == [stamp]]
 	data = data.fillna(data['value'].mean())
-	data['value'] = data['value'].max() + data['value'].min() - data['value']
-	# data['value'] = (data['value']-data['value'].min())/(data['value'].max()-data['value'].min())
-	
 	data['posi'] = data.x * 60 + data.y
 	for i in range(2866):
-		ss[int(data.iloc[i].posi)] = data.iloc[i].value
-
+		velo[int(data.iloc[i].posi)] = data.iloc[i].value  # store the original speed value		
+	
 	weights = [{} for i in range(3600)]
+	ss = [np.nan for i in range(3600)]
 	graph = grid2graph()
+	data['value'] = data['value'].max() + data['value'].min() - data['value']
+	for i in range(2866):
+		lengthNorm = (roadLen[int(data.iloc[i].posi)]-Min)/(Max-Min)*50
+		ss[int(data.iloc[i].posi)] = data.iloc[i].value + lengthNorm
+		# ss[int(data.iloc[i].posi)] = lengthNorm
+
 	for i in range(3600):
 		for j in graph[i]:
-			if ss[j] is np.nan:
+			if np.isnan(ss[j]):
 				continue
 			weights[i][j] = ss[j]
+	# print(weights)
 	
-
 	start = x1*60 + y1
 	end = x2*60 + y2
 	path = [[] for i in range(3600)]
 	flag = [0 for i in range(3600)]
-	length = [10000000 for i in range(3600)]
+	length = [10000000000 for i in range(3600)]
 	length[start] = 0
 	path[start].append(start)
 	flag[start] = 1 
@@ -85,11 +99,16 @@ def top(x1,y1,x2,y2,time):
 			continue
 		parent = path[start][-1]
 		path[start] = path[parent]+[start]
-		# print(start,length[start],path[start])
-	return path[end]
+		
+	t, l = 0, 0
+	for item in path[end]:
+		t += (roadLen[item]/(velo[item]*5/18))
+		l += roadLen[item]
+	# print(path[end],length[end])
+	return [t,l] + path[end]
 
 def bottom(x1,y1,x2,y2,time):
-	upper = top(x1,y1,x2,y2,time)
+	upper = top(x1,y1,x2,y2,time)[1:]
 	seg = pickle.Unpickler(open('./SurfaceRoad.dat','rb')).load()
 	tt = 0
 	bottom = []
@@ -120,16 +139,29 @@ def bottom(x1,y1,x2,y2,time):
 
 	return upper
 
-ss = [np.nan for i in range(3600)]
-path = top(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3]),int(sys.argv[4]),sys.argv[5])
-road = pickle.Unpickler(open('./SurfaceRoad.dat','rb')).load()
-tt = 0
-for ele in path:
-	x = ele // 60
-	y = ele % 60
-	length = max(road[x][y].values())
-	tt += length/(ss[ele]*5/18)
-# path = bottom(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
-print(path)
+length, tt = [], []
+for time in range(0,1440,60):
+	velo = [np.nan for i in range(3600)]
+	t = str(time//60).zfill(2)+':'+str(time%60).zfill(2)
+	res = topRouting1(10,10,45,45,t)
+	velo = np.array(velo)
+	vMax, vMin = np.nanmax(velo), np.nanmin(velo)
+	print(res[0])
+	tt.append(res[0])
+	length.append(res[1])
+		
 print(tt)
-# print(tt)
+print(length)
+	# for i in range(len(velo)):
+	# 	if np.isnan(velo[i]):
+	# 		velo[i] = vMax + vMin
+	# 	velo[i] = vMax + vMin - velo[i]
+	# velo = velo.reshape(60,60)
+	# plt.figure()
+	# plt.imshow(velo, origin = 'lower', interpolation = 'hermite', vmin = 0, vmax = 50, cmap = 'jet')
+	# plt.colorbar(cmap = 'jet')
+	# for path in res[1:]:
+	# 	plt.scatter(path // 60, path % 60, c = 'm')
+	# plt.title(t + 'time: '+str(res[0]))
+	# plt.savefig('E:/res/'+t[:2]+t[3:]+'1.png',dpi=100)
+	# plt.close()
