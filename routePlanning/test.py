@@ -114,8 +114,6 @@ def bottom(upper):
 		x = ele // 60
 		y = ele % 60
 		length = max(seg[x][y].values())
-		print(x,y,ss[ele],length)
-		# print(length,seg[x][y])
 		for key in seg[x][y]:
 			bottom.append(key)
 	
@@ -134,19 +132,21 @@ def bottom(upper):
 	geojson = {'type':'FeatureCollection','features':features}
 	with open('./path.json','w',encoding = 'utf-8') as f:
 		json.dump(geojson, f, ensure_ascii = False)
-
 	return upper
 
-length, tt = [], []
-for time in range(0,1440,60):
-	velo = [np.nan for i in range(3600)]
-	t = str(time//60).zfill(2)+':'+str(time%60).zfill(2)
-	res = topRouting1(10,10,45,50,t)
-	velo = np.array(velo)
-	vMax, vMin = np.nanmax(velo), np.nanmin(velo)
-	print(res[0])
-	tt.append(res[0])
-	length.append(res[1])
+velo = [np.nan for i in range(3600)]
+path = topRouting(10,10,50,50,'06:00')[2:]
+bottom(path)
+# length, tt = [], []
+# for time in range(0,1440,60):
+# 	velo = [np.nan for i in range(3600)]
+# 	t = str(time//60).zfill(2)+':'+str(time%60).zfill(2)
+# 	res = topRouting1(10,10,45,50,t)
+# 	velo = np.array(velo)
+# 	vMax, vMin = np.nanmax(velo), np.nanmin(velo)
+# 	print(res[0])
+# 	tt.append(res[0])
+# 	length.append(res[1])
 		
-print(tt)
-print(length)
+# print(tt)
+# print(length)

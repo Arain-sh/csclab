@@ -217,16 +217,16 @@
 					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#00FF00");})
 					.append("title")
 					.text(function(d) {return d.properties.路名;});
-			});	
+			});	*/
 			
 			
-			d3.json("bottom.json", function(error, root){
+			d3.json("path.json", function(error, root){
 				if (error)
 					return console.error(error);
 				console.log(root.features);
 				
 				svg	.append("g")
-					//.call(zoom)
+					.call(zoom)
 					.selectAll("polygon")
 					.data(root.features)
 					.enter()
@@ -243,7 +243,7 @@
 					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#000080");})
 					.append("title")
 					.text(function(d) {return d.properties.路名;});
-			});*/
+			});
 
 		</script>
 	</div>
