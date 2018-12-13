@@ -142,7 +142,7 @@
 					
 			});
 							
-			/*
+			
 			d3.json("main2015.json", function(error, root){
 				if (error)
 					return console.error(error);
@@ -168,6 +168,7 @@
 					.text(function(d) {return d.properties.路名;});
 			});
 			
+			/*
 			d3.json("sub2015.json", function(error, root){
 				if (error)
 					return console.error(error);
