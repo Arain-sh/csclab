@@ -138,7 +138,20 @@
 							).join(" ");
 					})
 					.append("title")
-					.text(function(d) {return d.properties.名称;});
+					.text(function(d) {return d.properties.名称;})
+					
+					.append("text")
+					.text(function(d) {return d.properties.名称;})
+					.attr("x", function(d) {
+						return mean(d.points.map(
+							function(d) {return xScale(d[0]);}
+						));
+					})
+					.attr("y", function(d) {
+						return mean(d.points.map(
+							function(d) {return height - yScale(d[1]);}
+						));
+					})
 			});
 							
 			/*
