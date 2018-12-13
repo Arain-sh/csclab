@@ -122,38 +122,24 @@
 					return console.error(error);
 				console.log(data.features);
 				
-				var ele = svg .enter()
-								.append("g")
-								.call(zoom)
-								.selectAll("polygon")
-								.data(data.features)
-				
-				var eleEnter = ele.enter()
-								.append("polygon")
-								.attr("stroke", "#000")
-								.attr("stroke-width", 0.3)
-								.attr("fill", "#FAEBD7")
-								.attr("opacity", 0.5)
-								.attr("points", function(d) {
-									return d.points.map(
-										function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
-										).join(" ");
-								})
-								.append("title")
-								.text(function(d) {return d.properties.名称;})
+				svg .append("g")
+					.call(zoom)
+					.selectAll("polygon")
+					.data(data.features)				
+					.enter()
+					.append("polygon")
+					.attr("stroke", "#000")
+					.attr("stroke-width", 0.3)
+					.attr("fill", "#FAEBD7")
+					.attr("opacity", 0.5)
+					.attr("points", function(d) {
+						return d.points.map(
+							function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
+							).join(" ");
+					})
+					.append("title")
+					.text(function(d) {return d.properties.名称;});
 					
-				eleEnter.append("text")
-					.text(function(d) {return d.properties.名称;})
-					.attr("x", function(d) {
-						return mean(d.points.map(
-							function(d) {return xScale(d[0]);}
-						));
-					})
-					.attr("y", function(d) {
-						return mean(d.points.map(
-							function(d) {return height - yScale(d[1]);}
-						));
-					})
 			});
 							
 			/*
