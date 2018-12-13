@@ -140,7 +140,7 @@
 					.append("title")
 					.text(function(d) {return d.properties.名称;})
 					
-					.append("text")
+				svg .append("text")
 					.text(function(d) {return d.properties.名称;})
 					.attr("x", function(d) {
 						return mean(d.points.map(
