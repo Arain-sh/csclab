@@ -102,7 +102,7 @@
 						.range([0,height]);
 						
 			var zoom = d3.behavior.zoom()
-						.scaleExtent([1,10])
+						.scaleExtent([1,20])
 						.scale(1)
 						.translate([0,0])
 						.on("zoom",zoomed);
