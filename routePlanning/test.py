@@ -2,10 +2,10 @@ import pickle
 import json
 import numpy as np
 import pandas as pd
-import shapefile
 import geopandas as gp
 import sys
-import matplotlib.pyplot as plt
+import shapefile
+
 
 seg = pickle.Unpickler(open('./SurfaceRoad.dat','rb')).load()
 roadLen = [np.nan]*3600
@@ -43,7 +43,7 @@ def grid2graph():
 			graph[i].append(i+60)
 	return graph
 
-def topRouting1(x1,y1,x2,y2,time):
+def topRouting(x1,y1,x2,y2,time):
 	# Routing algorithm with traffic states
 	stamp = (int(time[0:2])*60+int(time[3:5]))//2
 	data = pd.read_csv('./static.csv')	
@@ -107,10 +107,8 @@ def topRouting1(x1,y1,x2,y2,time):
 	# print(path[end],length[end])
 	return [t,l] + path[end]
 
-def bottom(x1,y1,x2,y2,time):
-	upper = top(x1,y1,x2,y2,time)[1:]
-	seg = pickle.Unpickler(open('./SurfaceRoad.dat','rb')).load()
-	tt = 0
+def bottom(upper):
+	# input: upper path, [610,670,671,...]
 	bottom = []
 	for ele in upper:
 		x = ele // 60
@@ -143,7 +141,7 @@ length, tt = [], []
 for time in range(0,1440,60):
 	velo = [np.nan for i in range(3600)]
 	t = str(time//60).zfill(2)+':'+str(time%60).zfill(2)
-	res = topRouting1(10,10,45,45,t)
+	res = topRouting1(10,10,45,50,t)
 	velo = np.array(velo)
 	vMax, vMin = np.nanmax(velo), np.nanmin(velo)
 	print(res[0])
@@ -152,16 +150,3 @@ for time in range(0,1440,60):
 		
 print(tt)
 print(length)
-	# for i in range(len(velo)):
-	# 	if np.isnan(velo[i]):
-	# 		velo[i] = vMax + vMin
-	# 	velo[i] = vMax + vMin - velo[i]
-	# velo = velo.reshape(60,60)
-	# plt.figure()
-	# plt.imshow(velo, origin = 'lower', interpolation = 'hermite', vmin = 0, vmax = 50, cmap = 'jet')
-	# plt.colorbar(cmap = 'jet')
-	# for path in res[1:]:
-	# 	plt.scatter(path // 60, path % 60, c = 'm')
-	# plt.title(t + 'time: '+str(res[0]))
-	# plt.savefig('E:/res/'+t[:2]+t[3:]+'1.png',dpi=100)
-	# plt.close()
