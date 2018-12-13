@@ -122,11 +122,13 @@
 					return console.error(error);
 				console.log(data.features);
 				
-				var ele = svg .append("g")
+				var ele = svg .enter()
+								.append("g")
 								.call(zoom)
 								.selectAll("polygon")
 								.data(data.features)
-								.enter()
+				
+				var eleEnter = ele.enter()
 								.append("polygon")
 								.attr("stroke", "#000")
 								.attr("stroke-width", 0.3)
@@ -140,7 +142,7 @@
 								.append("title")
 								.text(function(d) {return d.properties.名称;})
 					
-				ele .append("text")
+				eleEnter.append("text")
 					.text(function(d) {return d.properties.名称;})
 					.attr("x", function(d) {
 						return mean(d.points.map(
