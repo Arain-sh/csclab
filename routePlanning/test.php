@@ -76,7 +76,7 @@
 			and the time should be "xx:xx", such as 08:00)</p><br>
 		
 		<?php
-		exec("python3 test.py $x1 20 30 40", $out);
+		exec("python test1218.py 5 20 30 40", $out);
 		var_dump($out);
 		?>
 		</form>		
