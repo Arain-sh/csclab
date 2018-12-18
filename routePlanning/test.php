@@ -76,8 +76,12 @@
 			and the time should be "xx:xx", such as 08:00)</p><br>
 		
 		<?php
-		exec("python test1218.py 5 20 30 40 2>error.txt", $out, $ret);
-		var_dump($out);
+		exec("python test1218.py ".$x1." ".$y1." ".$x2." ".$y2." ".$time);
+		echo $x1."\n";
+		echo $y1."\n";
+		echo $x2."\n";
+		echo $y2."\n";
+		echo $time;
 		?>
 		</form>		
 	</div>
