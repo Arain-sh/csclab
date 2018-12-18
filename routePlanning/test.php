@@ -76,14 +76,12 @@
 			and the time should be "xx:xx", such as 08:00)</p><br>
 		
 		<?php
-		exec("python3 test.py 2 20 30 40 09:00", $out);
+		exec("python3 test.py $x1 20 30 40", $out);
 		var_dump($out);
 		?>
 		</form>		
 	</div>
 	
-	
-		
 	
 	<div class = "col-sm-8 col-md-8 col-lg-8">
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" ></script>
