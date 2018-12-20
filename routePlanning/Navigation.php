@@ -257,7 +257,7 @@
 					.enter()
 					.append("polygon")
 					.attr("stroke", "#FF0000")
-					.attr("stroke-width", 1.5)
+					.attr("stroke-width", 2.5)
 					.attr("fill", "#FF0000")
 					.attr("fill-opacity", 0.00001)
 					.attr("points", function(d) {
