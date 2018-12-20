@@ -269,6 +269,8 @@
 					//.on("mouseout", function(d,i){return d3.select(this).attr("fill","#red");})
 					.append("title")
 					.text(function(d) {return d.properties.ID;});
+				
+				setTimeout(this, 5000)
 			});
 
 		</script>
