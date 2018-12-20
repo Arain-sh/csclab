@@ -220,7 +220,7 @@
 			});	*/
 			
 			
-			d3.json("path.json", function(error, root){
+			d3.json("path2.json", function(error, root){
 				if (error)
 					return console.error(error);
 				console.log(root.features);
