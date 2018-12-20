@@ -258,8 +258,8 @@
 					.append("polygon")
 					.attr("stroke", "#FF0000")
 					.attr("stroke-width", 0.5)
-					//.attr("fill", "#red")
-					.attr("opacity", 1.0)
+					.attr("fill", "black")
+					.attr("fill-opacity", 1.0)
 					.attr("points", function(d) {
 						return d.points.map(
 							function(d) {return [xScale(d[0]), height - yScale(d[1])].join(",");}
