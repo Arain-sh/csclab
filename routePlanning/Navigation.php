@@ -116,7 +116,7 @@
 					.attr("width", width)
 					.attr("height", height)				
 					.attr("transform", "translate(0,0)");		
-			/*
+			
 			d3.json("district.json", function(error, data){
 				if (error)
 					return console.error(error);
@@ -168,7 +168,7 @@
 					.text(function(d) {return d.properties.路名;});
 			});
 			
-			
+			/*
 			d3.json("sub2015.json", function(error, root){
 				if (error)
 					return console.error(error);
