@@ -115,7 +115,7 @@
 					.append("svg")
 					.attr("width", width)
 					.attr("height", height)				
-					.attr("transform", "translate(0, 0)");		
+					.attr("transform", "translate(0,0)");		
 			
 			d3.json("district.json", function(error, data){
 				if (error)
@@ -232,7 +232,7 @@
 					.enter()
 					.append("polygon")
 					.attr("stroke", "#000080")
-					.attr("stroke-width", 1.5)
+					.attr("stroke-width", 2.0)
 					.attr("fill", "#000080")
 					.attr("points", function(d) {
 						return d.points.map(

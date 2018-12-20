@@ -76,7 +76,7 @@
 			and the time should be "xx:xx", such as 08:00)</p><br>
 		
 		<?php
-		exec("python test1218.py ".$x1." ".$y1." ".$x2." ".$y2." ".$time);
+		exec("python3 test1218.py");
 		echo $x1."\n";
 		echo $y1."\n";
 		echo $x2."\n";
