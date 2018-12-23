@@ -243,7 +243,7 @@
 					.on("mouseout", function(d,i){return d3.select(this).attr("fill","#000080");})
 					.append("title")
 					.text(function(d) {return d.properties.路名;});
-			});*/
+			});
 			
 			d3.json("path1.json", function(error, root){
 				if (error)
@@ -271,7 +271,7 @@
 					.text(function(d) {return d.properties.ID;});
 				
 				setTimeout(this, 5000)
-			});
+			});*/
 
 		</script>
 	</div>
